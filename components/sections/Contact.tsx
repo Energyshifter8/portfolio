@@ -16,7 +16,7 @@ const Contact = () => {
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 pt-12">
           <div className="text-center">
             <div className="font-mono text-[10px] text-muted uppercase tracking-widest mb-2">УТСНЫ_ШУГАМ</div>
-            <div className="text-xl font-bold">+1 (555) 000-0000</div>
+            <div className="text-xl font-bold">(976) 88963679</div>
           </div>
           
           <div className="w-px h-12 bg-border hidden md:block" />
@@ -28,12 +28,6 @@ const Contact = () => {
             Видео дуудлага товлох
           </a>
         </div>
-      </div>
-      
-      <div className="mt-32 flex flex-wrap justify-center gap-8 opacity-20 select-none">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <span key={i} className="font-mono text-xs tracking-widest">ХОЛБОГДОХ_ДАРААЛАЛ_0{i+1}</span>
-        ))}
       </div>
     </section>
   );
