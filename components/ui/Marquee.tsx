@@ -11,12 +11,12 @@ interface MarqueeProps {
 
 const Marquee: React.FC<MarqueeProps> = ({ items, speed = 40, className = "" }) => {
   return (
-    <div className={`py-8 border-y border-zinc-200 dark:border-zinc-800 bg-white dark:bg-black overflow-hidden ${className}`}>
+    <div className={`py-8 border-y border-border bg-background overflow-hidden ${className}`}>
       <FastMarquee speed={speed} gradient={false}>
         {items.map((item, index) => (
           <div 
             key={index} 
-            className="flex items-center mx-8 text-2xl font-bold uppercase tracking-tighter text-zinc-300 dark:text-zinc-700"
+            className="flex items-center mx-8 text-2xl font-bold uppercase tracking-tighter text-muted"
           >
             <span className="mr-8">•</span>
             {item}
