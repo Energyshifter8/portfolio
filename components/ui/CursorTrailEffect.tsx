@@ -82,24 +82,22 @@ const CursorParticle: React.FC<ParticleProps> = ({
   stiffness,
   damping 
 }) => {
-  // Calculate delay factor - particles further back have lower stiffness/damping for "drag"
-  const delayFactor = (index + 1) * 0.05;
-  
-  // Create staggered spring motion
+  // Create staggered spring motion with dynamic falloff based on total particles
+  // Particles further back have lower stiffness to create the "lagging" trail effect
   const x = useSpring(mouseX, {
-    stiffness: stiffness - (index * 15),
-    damping: damping + (index * 2),
+    stiffness: stiffness - (index * (stiffness / (total * 1.5))),
+    damping: damping + (index * (damping / total)),
     restDelta: 0.001
   });
   
   const y = useSpring(mouseY, {
-    stiffness: stiffness - (index * 15),
-    damping: damping + (index * 2),
+    stiffness: stiffness - (index * (stiffness / (total * 1.5))),
+    damping: damping + (index * (damping / total)),
     restDelta: 0.001
   });
 
   // Size decreases as it gets further back in the trail
-  const size = baseSize * (1 - (index / total) * 0.5);
+  const size = baseSize * (1 - (index / total) * 0.8);
   // Opacity fades out
   const opacity = 1 - (index / total);
 

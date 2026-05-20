@@ -29,7 +29,13 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-foreground selection:text-background">
-        <CursorTrailEffect />
+        <CursorTrailEffect 
+          particleCount={40} 
+          baseSize={10} 
+          color="#00FF00" 
+          stiffness={300}
+          damping={30}
+        />
         {children}
       </body>
     </html>
