@@ -7,10 +7,10 @@ const Contact = () => {
       
       <div className="space-y-12">
         <a 
-          href="mailto:hello@example.com" 
+          href="mailto:temuulenbold1@gmail.com" 
           className="block text-4xl md:text-7xl font-bold tracking-tighter uppercase hover:text-muted transition-colors underline decoration-border underline-offset-[16px]"
         >
-          hello@example.com
+          temuulenbold1@gmail.com
         </a>
         
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 pt-12">

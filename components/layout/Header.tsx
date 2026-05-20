@@ -20,7 +20,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <a href="mailto:hello@example.com" className="hover:opacity-60 transition-opacity">
+            <a href="mailto:temuulenbold1@gmail.com" className="hover:opacity-60 transition-opacity">
               ХОЛБОО_ТОГТООХ
             </a>
           </li>
