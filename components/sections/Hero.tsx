@@ -1,21 +1,41 @@
+"use client";
+
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <section className="pt-40 pb-24 px-6 max-w-7xl mx-auto">
-      <div className="max-w-3xl">
-        <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-tight mb-8">
-          Hey! I&apos;m a developer building digital products.
-        </h1>
-        <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 leading-relaxed mb-10">
-          I specialize in building high-performance web applications with a focus on clean code and user experience. Currently exploring the intersection of design and technology.
-        </p>
-        <div className="flex flex-wrap gap-4">
-          <div className="flex items-center gap-2 px-4 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-full text-sm font-medium">
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            Available for new projects
-          </div>
-        </div>
+    <section id="hero" className="min-h-screen flex flex-col justify-center px-6 max-w-7xl mx-auto">
+      <div className="overflow-hidden mb-8">
+        <motion.h1 
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-[18vw] md:text-[10rem] font-bold tracking-tighter leading-[0.85] uppercase"
+        >
+          Hey!
+        </motion.h1>
+      </div>
+      
+      <div className="max-w-2xl">
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="text-xl md:text-3xl leading-relaxed text-muted"
+        >
+          You&apos;ve arrived at the portfolio of <span className="text-foreground font-bold underline decoration-border underline-offset-8">Your Name</span> – a full-stack freelance designer and developer.
+        </motion.p>
+        
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="mt-12 flex items-center gap-4 font-mono text-xs uppercase tracking-widest"
+        >
+          <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+          Available for new projects
+        </motion.div>
       </div>
     </section>
   );
