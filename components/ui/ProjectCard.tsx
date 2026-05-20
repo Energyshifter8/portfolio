@@ -26,7 +26,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total }) => {
       >
         <div className="flex flex-col md:grid md:grid-cols-12 gap-8 items-start">
           <div className="md:col-span-2">
-            <div className="font-mono text-xs text-muted mb-1">CLIENT</div>
+            <div className="font-mono text-xs text-muted mb-1">ХАРИЛЦАГЧ</div>
             <div className="font-mono text-4xl font-bold tracking-tighter">{project.code}</div>
           </div>
           

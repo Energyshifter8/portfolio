@@ -21,7 +21,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
     >
       <div className="flex justify-between items-start mb-8">
         <div>
-          <div className="font-mono text-xs text-muted mb-1">SERVICE</div>
+          <div className="font-mono text-xs text-muted mb-1">ҮЙЛЧИЛГЭЭ</div>
           <div className="font-mono text-3xl font-bold tracking-tighter">{service.code}</div>
         </div>
         <div className="font-mono text-xs text-muted">{service.dateCode}</div>

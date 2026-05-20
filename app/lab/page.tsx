@@ -5,19 +5,19 @@ import Footer from '@/components/layout/Footer';
 export default function LabPage() {
   const experiments = [
     {
-      title: "Interactive WebGL Fluid",
-      description: "Experimenting with fluid simulations using WebGL and shaders.",
-      status: "In Progress"
+      title: "Интерактив WebGL Шингэн",
+      description: "WebGL болон шэйдерүүд ашиглан шингэний симуляци туршиж байна.",
+      status: "Хийгдэж байна"
     },
     {
-      title: "Generative Art Study",
-      description: "Automated pattern generation using cellular automata.",
-      status: "Completed"
+      title: "Генератив Урлагийн Судалгаа",
+      description: "Үүрэн автоматик ашиглан автомат хээ үүсгэх нь.",
+      status: "Дууссан"
     },
     {
-      title: "Custom Physics Engine",
-      description: "A lightweight 2D physics engine built from scratch in TypeScript.",
-      status: "Alpha"
+      title: "Өөрийн Физикийн Хөдөлгүүр",
+      description: "TypeScript дээр эхнээс нь бүтээсэн хөнгөн 2D физикийн хөдөлгүүр.",
+      status: "Альфа"
     }
   ];
 
@@ -26,9 +26,9 @@ export default function LabPage() {
       <Header />
       <main className="flex-1 pt-40 pb-24 px-6 max-w-7xl mx-auto">
         <div className="max-w-3xl mb-16">
-          <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-8">Lab</h1>
+          <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-8">Лаборатори</h1>
           <p className="text-xl md:text-2xl text-muted leading-relaxed">
-            A space for experiments, prototypes, and unfinished ideas. These are projects where I explore new technologies and push my creative boundaries.
+            Туршилт, загвар болон дуусаагүй санаануудад зориулагдсан орон зай. Эдгээр нь миний шинэ технологиудыг судалж, бүтээлч байдлынхаа хязгаарыг тэлдэг төслүүд юм.
           </p>
         </div>
         
@@ -49,7 +49,7 @@ export default function LabPage() {
                 {exp.description}
               </p>
               <button className="text-sm font-bold border-b-2 border-foreground pb-1">
-                View Source
+                Эхийг үзэх
               </button>
             </div>
           ))}

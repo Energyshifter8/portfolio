@@ -25,12 +25,12 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         <div className="max-w-4xl">
           <div className="flex flex-wrap gap-8 mb-12 items-center">
              <div>
-                <div className="font-mono text-[10px] text-muted mb-1">CLIENT_CODE</div>
+                <div className="font-mono text-[10px] text-muted mb-1">ХАРИЛЦАГЧИЙН_КОД</div>
                 <div className="font-mono text-2xl font-bold">{project.code}</div>
              </div>
              <div className="w-px h-8 bg-border" />
              <div>
-                <div className="font-mono text-[10px] text-muted mb-1">PROJECT_YEAR</div>
+                <div className="font-mono text-[10px] text-muted mb-1">ТӨСЛИЙН_ОН</div>
                 <div className="font-mono text-2xl font-bold">{project.year}</div>
              </div>
           </div>
@@ -48,7 +48,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           <div className="grid md:grid-cols-12 gap-16">
             <div className="md:col-span-4 space-y-12">
               <div>
-                <h4 className="font-mono text-[10px] uppercase tracking-widest text-muted mb-4">SPECIFICATIONS</h4>
+                <h4 className="font-mono text-[10px] uppercase tracking-widest text-muted mb-4">ҮЗҮҮЛЭЛТҮҮД</h4>
                 <div className="flex flex-wrap gap-4">
                   {project.tags.map((tag) => (
                     <Tag key={tag}>{tag}</Tag>
@@ -56,19 +56,19 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 </div>
               </div>
               <div>
-                <h4 className="font-mono text-[10px] uppercase tracking-widest text-muted mb-4">CLIENT</h4>
+                <h4 className="font-mono text-[10px] uppercase tracking-widest text-muted mb-4">ХАРИЛЦАГЧ</h4>
                 <p className="text-xl font-bold uppercase tracking-tight">{project.client}</p>
               </div>
             </div>
             
             <div className="md:col-span-8">
-              <h4 className="font-mono text-[10px] uppercase tracking-widest text-muted mb-8">EXECUTIVE_SUMMARY</h4>
+              <h4 className="font-mono text-[10px] uppercase tracking-widest text-muted mb-8">ГҮЙЦЭТГЭХ_ХУРААНГУЙ</h4>
               <div className="space-y-8 text-2xl md:text-3xl leading-tight text-muted">
                 <p>
-                  Deploying a comprehensive visual system for {project.client}. The objective was to create a high-fidelity digital interface that prioritizes structural integrity and user flow.
+                  {project.client}-д зориулсан цогц визуал системийг нэвтрүүлж байна. Зорилго нь бүтцийн бүрэн бүтэн байдал болон хэрэглэгчийн урсгалыг чухалчилсан, өндөр нарийвчлалтай дижитал интерфэйс бүтээх байсан.
                 </p>
                 <p>
-                  Utilizing a restricted color palette and rigorous grid alignment to ensure consistency across all touchpoints.
+                  Бүх харилцах цэгүүдэд тогтвортой байдлыг хангахын тулд хязгаарлагдмал өнгөний палитр болон хатуу торны шугам (grid) ашигласан.
                 </p>
               </div>
             </div>

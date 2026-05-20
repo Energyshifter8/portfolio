@@ -11,16 +11,16 @@ export interface Service {
 export const services: Service[] = [
   {
     code: "WEB",
-    title: "Web Design",
+    title: "Вэб Дизайн",
     dateCode: "06-20-12",
-    upperTags: ["UI/UX", "Prototypes", "Components"],
-    lowerTags: ["Figma", "Wireframes", "Interactions"],
+    upperTags: ["UI/UX", "Прототипүүд", "Компонентууд"],
+    lowerTags: ["Figma", "Ерөнхий бүтэц", "Интеракцууд"],
     processFrom: "WIR",
     processTo: "PRO",
   },
   {
     code: "DEV",
-    title: "Full-Stack Dev",
+    title: "Фулл-Стак Хөгжүүлэлт",
     dateCode: "08-15-22",
     upperTags: ["Next.js", "TypeScript", "Node"],
     lowerTags: ["Prisma", "PostgreSQL", "Tailwind"],
@@ -29,7 +29,7 @@ export const services: Service[] = [
   },
   {
     code: "MOT",
-    title: "Motion Design",
+    title: "Хөдөлгөөнт Дизайн",
     dateCode: "11-02-23",
     upperTags: ["After Effects", "Lottie", "GSAP"],
     lowerTags: ["Framer", "Canvas", "WebGL"],
@@ -38,10 +38,10 @@ export const services: Service[] = [
   },
   {
     code: "BRA",
-    title: "Brand Identity",
+    title: "Брэндийн Өнгө Төрх",
     dateCode: "03-12-24",
-    upperTags: ["Logos", "Styleguides", "Typography"],
-    lowerTags: ["Print", "Digital", "Guidelines"],
+    upperTags: ["Логонууд", "Загварын удирдамжууд", "Типографи"],
+    lowerTags: ["Хэвлэл", "Дижитал", "Удирдамжууд"],
     processFrom: "IDE",
     processTo: "MAR",
   },

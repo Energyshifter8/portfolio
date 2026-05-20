@@ -8,7 +8,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 w-full z-50 mix-blend-difference px-6 py-8 flex justify-between items-center pointer-events-none">
       <Link href="/" className="pointer-events-auto">
         <div className="font-mono text-xs uppercase tracking-[0.4em] font-bold">
-          [YH] — SYSTEM
+          [YH] — СИСТЕМ
         </div>
       </Link>
       
@@ -16,12 +16,12 @@ const Header = () => {
         <ul className="flex gap-8 font-mono text-[10px] uppercase tracking-widest">
           <li>
             <Link href="/lab" className="hover:opacity-60 transition-opacity">
-              LAB_EXPERIMENTS
+              ЛАБОРАТОРИЙН_ТУРШИЛТУУД
             </Link>
           </li>
           <li>
             <a href="mailto:hello@example.com" className="hover:opacity-60 transition-opacity">
-              CONTACT_INIT
+              ХОЛБОО_ТОГТООХ
             </a>
           </li>
         </ul>

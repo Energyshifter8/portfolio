@@ -13,7 +13,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-[18vw] md:text-[10rem] font-bold tracking-tighter leading-[0.85] uppercase"
         >
-          Hey!
+          Сайн уу!
         </motion.h1>
       </div>
       
@@ -24,7 +24,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="text-xl md:text-3xl leading-relaxed text-muted"
         >
-          You&apos;ve arrived at the portfolio of <span className="text-foreground font-bold underline decoration-border underline-offset-8">Your Name</span> – a full-stack freelance designer and developer.
+          Та <span className="text-foreground font-bold underline decoration-border underline-offset-8">Таны Нэр</span> – чөлөөт фулл-стак дизайнер, хөгжүүлэгчийн портфолиод тавтай морил.
         </motion.p>
         
         <motion.div
@@ -34,7 +34,7 @@ const Hero = () => {
           className="mt-12 flex items-center gap-4 font-mono text-xs uppercase tracking-widest"
         >
           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-          Available for new projects
+          Шинэ төсөл дээр ажиллахад бэлэн
         </motion.div>
       </div>
     </section>

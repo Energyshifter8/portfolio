@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "[YH] — Designer & Developer",
-  description: "A dark, editorial, Swiss/terminal-inspired portfolio for a freelance designer and developer.",
+  title: "[YH] — Дизайнер & Хөгжүүлэгч",
+  description: "Чөлөөт дизайнер, хөгжүүлэгчид зориулсан хар бараан, редакцын, Swiss/терминалаас сэдэвлэсэн портфолио.",
 };
 
 export default function RootLayout({
