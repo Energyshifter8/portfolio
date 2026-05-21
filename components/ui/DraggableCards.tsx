@@ -10,25 +10,36 @@ interface DraggableCardsProps {
 
 const CARD_WIDTH = 340;
 const GAP = 24;
+const CARD_STEP = CARD_WIDTH + GAP;
 
 const DraggableCards: React.FC<DraggableCardsProps> = ({ services }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [constraints, setConstraints] = useState({ left: 0, right: 0 });
   const [isDragging, setIsDragging] = useState(false);
+  
+  // Triple the services for infinite effect
+  const allServices = [...services, ...services, ...services];
+  const oneSetWidth = services.length * CARD_STEP;
 
-  const x = useMotionValue(0);
+  const x = useMotionValue(-oneSetWidth);
   const springX = useSpring(x, { damping: 25, stiffness: 180, mass: 0.8 });
 
-  useEffect(() => {
-    if (trackRef.current && containerRef.current) {
-      const trackWidth = trackRef.current.scrollWidth;
-      const containerWidth = containerRef.current.offsetWidth;
-      setConstraints({ left: -(trackWidth - containerWidth + 48), right: 0 });
-    }
-  }, [services]);
+  // Progress logic: relative to one set
+  const progress = useTransform(x, (latest) => {
+    const relativeX = Math.abs(latest % oneSetWidth);
+    return (relativeX / oneSetWidth) * 100;
+  });
 
-  const progress = useTransform(x, [constraints.left, 0], [100, 0]);
+  const handleDragEnd = () => {
+    setIsDragging(false);
+    const currentX = x.get();
+    
+    // Silent snap back to middle set if we've moved too far
+    if (currentX > 0) {
+      x.set(currentX - oneSetWidth);
+    } else if (currentX < -oneSetWidth * 2) {
+      x.set(currentX + oneSetWidth);
+    }
+  };
 
   return (
     <div className="relative w-full overflow-hidden" ref={containerRef}>
@@ -38,33 +49,30 @@ const DraggableCards: React.FC<DraggableCardsProps> = ({ services }) => {
           <span>ШИЛЖИХ_ХЭМЖҮҮР.EXE</span>
           <div className="w-48 h-[2px] bg-border relative overflow-hidden">
             <motion.div 
-              style={{ width: progress.get() + "%" }}
+              style={{ width: progress }}
               className="absolute h-full bg-foreground left-0 top-0"
             />
           </div>
         </div>
         <div className="font-mono text-[10px] text-muted uppercase tracking-widest">
-          {services.length} НЭГЖ
+          {services.length} НЭГЖ / LOOP_ACTIVE
         </div>
       </div>
 
       <motion.div
-        ref={trackRef}
         drag="x"
-        dragConstraints={constraints}
-        dragElastic={0.08}
         onDragStart={() => setIsDragging(true)}
-        onDragEnd={() => setIsDragging(false)}
+        onDragEnd={handleDragEnd}
         style={{ x: springX }}
         className="flex gap-6 cursor-grab active:cursor-grabbing py-4"
       >
-        {services.map((service, index) => (
+        {allServices.map((service, index) => (
           <motion.div
             key={service.code + index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6, delay: (index % services.length) * 0.08, ease: [0.16, 1, 0.3, 1] }}
             className="flex-shrink-0 w-[340px] p-8 border border-border bg-white/[0.01] transition-colors relative group overflow-hidden"
           >
             <div className="flex justify-between items-start mb-8">
