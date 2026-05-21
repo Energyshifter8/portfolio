@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "@/components/layout/SmoothScrolling";
 import CustomCursor from "@/components/ui/CustomCursor";
+import CursorTrailEffect from "@/components/ui/CursorTrailEffect";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] text-white selection:bg-white selection:text-black`}
       >
         <CustomCursor />
+        <CursorTrailEffect />
         <SmoothScrolling>
           {children}
         </SmoothScrolling>
