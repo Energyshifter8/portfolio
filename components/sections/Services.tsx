@@ -1,5 +1,5 @@
 import React from 'react';
-import ServiceCard from '../ui/ServiceCard';
+import DraggableCards from '../ui/DraggableCards';
 import { services } from '@/data/services';
 
 const Services = () => {
@@ -20,11 +20,7 @@ const Services = () => {
         </div>
       </div>
       
-      <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-px bg-border border border-border overflow-hidden">
-        {services.map((service, index) => (
-          <ServiceCard key={index} service={service} index={index} />
-        ))}
-      </div>
+      <DraggableCards services={services} />
     </section>
   );
 };
