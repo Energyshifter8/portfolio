@@ -1,20 +1,8 @@
 "use client";
 
 import React from 'react';
-import Marquee from '../ui/Marquee';
 
 const About = () => {
-  const awards = [
-    "FWA FOTD x2",
-    "Awwwards HM x4",
-    "CSS Design Awards SOTD",
-    "GSAP SOTD x4",
-    "Behance Featured",
-    "SiteInspire",
-    "Commarts",
-    "Product Hunt #1"
-  ];
-
   const clients = [
     "Universal Music",
     "The New York Times",
@@ -53,10 +41,6 @@ const About = () => {
             </ul>
           </div>
         </div>
-      </div>
-
-      <div className="border-y border-border py-12 bg-white/[0.01]">
-        <Marquee items={awards} />
       </div>
     </section>
   );
