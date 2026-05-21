@@ -10,9 +10,20 @@ const techItems = [
 ];
 
 const projects = [
-  { id: "01", title: "QUANTUM_OS", role: "LEAD ARCHITECT", status: "STABLE" },
-  { id: "02", title: "NEURAL_LINK", role: "INTERFACE DESIGN", status: "EXPERIMENTAL" },
-  { id: "03", title: "CYBER_RETAIL", role: "WEBGL DEV", status: "LEGACY" },
+  { 
+    id: "01", 
+    title: "USER_SYSTEM", 
+    role: "FULL-STACK / REACT", 
+    status: "STABLE",
+    link: "https://github.com/Energyshifter8/user" 
+  },
+  { 
+    id: "02", 
+    title: "GRAVITY_SIM", 
+    role: "PHYSICS ENGINE / C++", 
+    status: "EXPERIMENTAL",
+    link: "https://github.com/Energyshifter8/gravity_sim"
+  },
 ];
 
 export default function Home() {
@@ -83,12 +94,18 @@ export default function Home() {
             ## FILE_SYSTEM / PROJECTS
           </div>
           <div className="divide-y divide-white/20">
-            {projects.map((p) => (
+            {projects.map((p: any) => (
               <motion.div 
                 key={p.id}
                 whileHover={{ backgroundColor: "rgba(255,255,255,0.03)" }}
-                className="grid grid-cols-1 md:grid-cols-12 p-8 md:p-12 items-center group cursor-pointer"
+                className="grid grid-cols-1 md:grid-cols-12 p-8 md:p-12 items-center group cursor-pointer relative"
               >
+                <a 
+                  href={p.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="absolute inset-0 z-20"
+                />
                 <div className="md:col-span-1 font-mono text-[10px] text-white/20">{p.id}</div>
                 <div className="md:col-span-6">
                   <h3 className="text-4xl md:text-8xl font-bold tracking-tighter uppercase group-hover:text-accent transition-colors duration-500">
