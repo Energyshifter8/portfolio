@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import CursorTrailEffect from "@/components/ui/CursorTrailEffect";
+import SmoothScrolling from "@/components/layout/SmoothScrolling";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "[YH] — Дизайнер & Хөгжүүлэгч",
-  description: "Чөлөөт дизайнер, хөгжүүлэгчид зориулсан хар бараан, редакцын, Swiss/терминалаас сэдэвлэсэн портфолио.",
+  title: "TEMUULEN B. | FRONTEND DEVELOPER",
+  description: "Highly creative Brutalist-style developer portfolio",
 };
 
 export default function RootLayout({
@@ -24,19 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-foreground selection:text-background">
-        <CursorTrailEffect 
-          particleCount={40} 
-          baseSize={10} 
-          color="#00FF00" 
-          stiffness={300}
-          damping={30}
-        />
-        {children}
+    <html lang="en" className="dark scroll-smooth">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] text-white selection:bg-white selection:text-black`}
+      >
+        <CustomCursor />
+        <SmoothScrolling>
+          {children}
+        </SmoothScrolling>
       </body>
     </html>
   );
