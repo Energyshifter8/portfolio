@@ -44,8 +44,8 @@ export default function Home() {
                 [ SYSTEM STATUS: OPERATIONAL ]
               </div>
               <motion.div style={{ skewY: skewVelocity }} className="relative">
-                <h1 className="text-[18vw] md:text-[14rem] font-bold leading-[0.75] tracking-tighter uppercase mix-blend-difference">
-                  TEMU<br/>ULEN B.
+                <h1 className="text-[14vw] md:text-[10rem] font-bold leading-[0.75] tracking-tighter uppercase mix-blend-difference whitespace-nowrap">
+                  TEMUULEN B.
                 </h1>
                 <div className="absolute -top-10 -right-10 font-mono text-[10px] text-white/30 hidden md:block">
                   COORD_X: 47.9188<br/>COORD_Y: 106.9176
@@ -134,12 +134,26 @@ export default function Home() {
             
             <div className="space-y-4">
               <div className="w-full h-[1px] bg-white/10" />
-              <a href="mailto:sys@temuulen.b" className="group block">
-                <div className="font-mono text-[8px] text-white/20 tracking-widest uppercase mb-4">INITIATE_HANDSHAKE</div>
-                <span className="text-4xl md:text-7xl font-bold tracking-tighter uppercase group-hover:text-accent transition-all">
-                  HI@TEMUULEN.B
-                </span>
-              </a>
+              <div className="flex flex-col xl:flex-row justify-between items-start xl:items-end gap-8 pt-4">
+                <a href="mailto:temuulenbold1@gmail.com" className="group block">
+                  <div className="font-mono text-[8px] text-white/20 tracking-widest uppercase mb-4">INITIATE_HANDSHAKE</div>
+                  <span className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter uppercase group-hover:text-accent transition-all break-all">
+                    TEMUULENBOLD1@GMAIL.COM
+                  </span>
+                </a>
+                <a 
+                  href="https://github.com/Energyshifter8" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="group flex items-center gap-4 border border-white/20 p-4 hover:bg-white/5 transition-colors flex-shrink-0"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white group-hover:text-accent transition-colors">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                    <path d="M9 18c-4.51 2-5-2-7-2"/>
+                  </svg>
+                  <span className="font-mono text-[10px] uppercase tracking-widest group-hover:text-accent transition-colors">GITHUB_PROFILE</span>
+                </a>
+              </div>
             </div>
           </div>
         </section>
