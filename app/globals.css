@@ -1,39 +1,55 @@
 @import "tailwindcss";
 
-:root {
-  --bg: #2B47FF;
-  --fg: #f0ede6;
-  --muted: #9BA3FF;
-  --border: #4D64FF;
-  --accent: #f0ede6;
-}
-
-@theme inline {
-  --color-background: var(--bg);
-  --color-foreground: var(--fg);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-  --color-accent: var(--accent);
+@theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-* {
-  box-sizing: border-box;
+:root {
+  --background: #050505;
+  --foreground: #ffffff;
 }
 
 body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
 }
 
-.font-mono {
-  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+/* Custom Noise Overlay */
+.noise-bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200vh;
+  background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat;
+  background-repeat: repeat;
+  animation: noise 0.2s infinite;
+  opacity: .05;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes noise {
+  0% { transform: translate(0,0) }
+  10% { transform: translate(-5%,-5%) }
+  20% { transform: translate(-10%,5%) }
+  30% { transform: translate(5%,-10%) }
+  40% { transform: translate(-5%,15%) }
+  50% { transform: translate(-10%,5%) }
+  60% { transform: translate(15%,0) }
+  70% { transform: translate(0,10%) }
+  80% { transform: translate(-15%,0) }
+  90% { transform: translate(10%,5%) }
+  100% { transform: translate(5%,0) }
+}
+
+.brutal-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
