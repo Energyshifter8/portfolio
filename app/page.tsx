@@ -159,17 +159,9 @@ export default function Home() {
         </section>
 
         {/* --- SYSTEM LOG FOOTER --- */}
-        <footer className="p-10 font-mono text-[10px] text-white/20 flex flex-col md:flex-row justify-between items-center gap-10">
-          <div className="flex gap-10">
-            <span>[ SYSTEM_TIME: {new Date().toLocaleTimeString()} ]</span>
-            <span>[ UPTIME: 99.9% ]</span>
-          </div>
-          <div className="flex gap-10">
-            {['GITHUB', 'LINKEDIN', 'READ.CV'].map(s => (
-              <a key={s} href="#" className="hover:text-accent transition-colors tracking-widest">[{s}]</a>
-            ))}
-          </div>
+        <footer className="p-10 font-mono text-[10px] text-white/20 flex justify-between items-center border-t border-white/10">
           <div>© 2026-PRESENT // ARCH_RESERVED</div>
+          <div className="text-white/10">[ END_OF_TRANSMISSION ]</div>
         </footer>
       </main>
     </>
