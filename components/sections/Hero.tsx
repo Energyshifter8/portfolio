@@ -24,18 +24,8 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="text-xl md:text-3xl leading-relaxed text-muted"
         >
-          Та <span className="text-foreground font-bold underline decoration-border underline-offset-8">Таны Нэр</span> – чөлөөт фулл-стак дизайнер, хөгжүүлэгчийн портфолиод тавтай морил.
+          Та <span className="text-foreground font-bold underline decoration-border underline-offset-8">Temuulen</span> – фронтенд дизайнер, хөгжүүлэгчийн портфолиод тавтай морил.
         </motion.p>
-        
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="mt-12 flex items-center gap-4 font-mono text-xs uppercase tracking-widest"
-        >
-          <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-          Шинэ төсөл дээр ажиллахад бэлэн
-        </motion.div>
       </div>
     </section>
   );

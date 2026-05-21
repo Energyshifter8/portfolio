@@ -3,7 +3,6 @@ import React from 'react';
 const Contact = () => {
   return (
     <section id="contact" className="py-48 px-6 max-w-7xl mx-auto border-t border-border text-center">
-      <h2 className="text-sm font-mono uppercase tracking-[0.3em] text-muted mb-16">## Тоглоход бэлэн үү?</h2>
       
       <div className="space-y-12">
         <a 

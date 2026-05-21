@@ -20,12 +20,12 @@ export const services: Service[] = [
   },
   {
     code: "DEV",
-    title: "Фулл-Стак Хөгжүүлэлт",
+    title: "Вэб Хөгжүүлэлт",
     dateCode: "08-15-22",
-    upperTags: ["Next.js", "TypeScript", "Node"],
-    lowerTags: ["Prisma", "PostgreSQL", "Tailwind"],
-    processFrom: "BCK",
-    processTo: "FRO",
+    upperTags: ["Next.js", "TypeScript", "React"],
+    lowerTags: ["Tailwind", "Framer Motion", "Анимаци"],
+    processFrom: "DES",
+    processTo: "DEV",
   },
   {
     code: "MOT",
@@ -35,14 +35,5 @@ export const services: Service[] = [
     lowerTags: ["Framer", "Canvas", "WebGL"],
     processFrom: "STA",
     processTo: "MOV",
-  },
-  {
-    code: "BRA",
-    title: "Брэндийн Өнгө Төрх",
-    dateCode: "03-12-24",
-    upperTags: ["Логонууд", "Загварын удирдамжууд", "Типографи"],
-    lowerTags: ["Хэвлэл", "Дижитал", "Удирдамжууд"],
-    processFrom: "IDE",
-    processTo: "MAR",
   },
 ];

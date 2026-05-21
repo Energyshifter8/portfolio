@@ -17,14 +17,6 @@ export const projects: Project[] = [
     year: 2024,
   },
   {
-    slug: "vanguard-branding",
-    code: "VNG",
-    client: "Vanguard Studio",
-    title: "Брэндийн Өнгө Төрх",
-    tags: ["БРЭНДИНГ", "ЛОГО", "ТҮҮХ_ӨГҮҮЛЭХ"],
-    year: 2024,
-  },
-  {
     slug: "echo-audio",
     code: "ECH",
     client: "Echo Sound",
