@@ -128,7 +128,7 @@ export default function Home() {
         <section className="grid grid-cols-1 md:grid-cols-2 divide-x divide-white/20 border-b border-white/20">
           <div className="p-12 md:p-32 flex flex-col justify-center">
             <h2 className="text-3xl md:text-[5rem] font-bold tracking-tighter leading-none uppercase mb-16 mix-blend-difference">
-              CAPA<br/>BILITIES
+              CAPABILITIES
             </h2>
             <div className="grid grid-cols-2 gap-x-12 gap-y-6">
               {techItems.map((tech) => (
