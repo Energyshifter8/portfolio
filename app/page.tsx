@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence, useScroll, useVelocity, useTransform, useSpring } from 'framer-motion';
 import Loader from '@/components/ui/Loader';
 import Geometry from '@/components/ui/Geometry';
@@ -28,7 +28,6 @@ const projects = [
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
-  const containerRef = useRef(null);
   
   const { scrollYProgress } = useScroll();
   const scrollVelocity = useVelocity(scrollYProgress);
@@ -94,7 +93,7 @@ export default function Home() {
             ## FILE_SYSTEM / PROJECTS
           </div>
           <div className="divide-y divide-white/20">
-            {projects.map((p: any) => (
+            {projects.map((p) => (
               <motion.div 
                 key={p.id}
                 whileHover={{ backgroundColor: "rgba(255,255,255,0.03)" }}
@@ -127,13 +126,13 @@ export default function Home() {
 
         {/* --- SYSTEM CAPABILITIES --- */}
         <section className="grid grid-cols-1 md:grid-cols-2 divide-x divide-white/20 border-b border-white/20">
-          <div className="py-12 pl-8 pr-12 md:py-24 md:pl-12 md:pr-24 flex flex-col justify-center">
-            <h2 className="text-4xl md:text-[7rem] font-bold tracking-tighter leading-none uppercase mb-20 mix-blend-difference">
+          <div className="p-12 md:p-32 flex flex-col justify-center">
+            <h2 className="text-3xl md:text-[5rem] font-bold tracking-tighter leading-none uppercase mb-16 mix-blend-difference">
               CAPA<br/>BILITIES
             </h2>
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 gap-x-12 gap-y-6">
               {techItems.map((tech) => (
-                <div key={tech} className="flex items-center gap-4 font-mono text-[12px] tracking-widest text-white/60">
+                <div key={tech} className="flex items-center gap-4 font-mono text-[10px] tracking-widest text-white/60">
                   <div className="w-1.5 h-1.5 bg-accent" />
                   {tech}
                 </div>
@@ -141,20 +140,20 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="p-12 md:p-24 flex flex-col justify-between min-h-[60vh]">
-            <div className="space-y-12">
+          <div className="p-12 md:p-32 flex flex-col justify-between min-h-[70vh]">
+            <div className="space-y-12 max-w-xl">
               <div className="font-mono text-[10px] text-white/20 tracking-widest uppercase">## PHILOSOPHY_MANIFESTO</div>
-              <p className="text-2xl md:text-4xl font-mono uppercase leading-tight text-white/80">
+              <p className="text-xl md:text-3xl font-mono uppercase leading-tight text-white/80">
                 BRUTALISM IS NOT ABOUT UGLINESS. IT IS ABOUT THE TRUTH OF THE MATERIALS. THE TRUTH OF THE CODE.
               </p>
             </div>
             
-            <div className="space-y-4">
+            <div className="space-y-8 mt-16 md:mt-0">
               <div className="w-full h-[1px] bg-white/10" />
-              <div className="flex flex-col xl:flex-row justify-between items-start xl:items-end gap-8 pt-4 relative z-50">
+              <div className="flex flex-col xl:flex-row justify-between items-start xl:items-end gap-12 pt-4 relative z-50">
                 <a href="mailto:temuulenbold1@gmail.com" className="group block">
                   <div className="font-mono text-[8px] text-white/20 tracking-widest uppercase mb-4">INITIATE_HANDSHAKE</div>
-                  <span className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter uppercase group-hover:text-accent transition-all whitespace-nowrap">
+                  <span className="text-xl md:text-4xl lg:text-5xl font-bold tracking-tighter uppercase group-hover:text-accent transition-all whitespace-nowrap">
                     TEMUULENBOLD1@GMAIL.COM
                   </span>
                 </a>
