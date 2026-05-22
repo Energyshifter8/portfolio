@@ -151,7 +151,7 @@ export default function Home() {
             <div className="space-y-8 mt-16 md:mt-0">
               <div className="w-full h-[1px] bg-white/10" />
               <div className="flex flex-col xl:flex-row justify-between items-start xl:items-end gap-12 pt-4 relative z-50">
-                <a href="mailto:temuulenbold1@gmail.com" className="group block">
+                <a href="mailto:temuulenbold1@gmail.com" className="group block -ml-4 md:-ml-12 lg:-ml-20">
                   <div className="font-mono text-[8px] text-white/20 tracking-widest uppercase mb-4">INITIATE_HANDSHAKE</div>
                   <span className="text-xl md:text-4xl lg:text-5xl font-bold tracking-tighter uppercase group-hover:text-accent transition-all whitespace-nowrap">
                     TEMUULENBOLD1@GMAIL.COM
