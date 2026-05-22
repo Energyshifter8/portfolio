@@ -90,7 +90,7 @@ export default function Home() {
 
         {/* --- DATA TABLE WORK --- */}
         <section className="border-b border-white/20">
-          <div className="p-8 md:p-12 bg-white/5 font-mono text-[10px] tracking-[0.5em] text-white/40 uppercase">
+          <div className="p-8 md:p-12 bg-white/5 font-mono text-[9px] tracking-[0.5em] text-white/40 uppercase">
             ## FILE_SYSTEM / PROJECTS
           </div>
           <div className="divide-y divide-white/20">
@@ -106,17 +106,17 @@ export default function Home() {
                   rel="noopener noreferrer" 
                   className="absolute inset-0 z-20"
                 />
-                <div className="md:col-span-1 font-mono text-[10px] text-white/20">{p.id}</div>
+                <div className="md:col-span-1 font-mono text-[9px] text-white/20">{p.id}</div>
                 <div className="md:col-span-6">
-                  <h3 className="text-4xl md:text-8xl font-bold tracking-tighter uppercase group-hover:text-accent transition-colors duration-500">
+                  <h3 className="text-3xl md:text-7xl font-bold tracking-tighter uppercase group-hover:text-accent transition-colors duration-500">
                     {p.title}
                   </h3>
                 </div>
-                <div className="md:col-span-3 font-mono text-[10px] text-white/40 tracking-widest mt-4 md:mt-0">
+                <div className="md:col-span-3 font-mono text-[9px] text-white/40 tracking-widest mt-4 md:mt-0">
                   {p.role}
                 </div>
                 <div className="md:col-span-2 text-right">
-                  <span className="inline-block px-3 py-1 border border-white/20 font-mono text-[8px] uppercase tracking-[0.3em]">
+                  <span className="inline-block px-3 py-1 border border-white/20 font-mono text-[7px] uppercase tracking-[0.3em]">
                     {p.status}
                   </span>
                 </div>
