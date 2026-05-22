@@ -127,13 +127,13 @@ export default function Home() {
 
         {/* --- SYSTEM CAPABILITIES --- */}
         <section className="grid grid-cols-1 md:grid-cols-2 divide-x divide-white/20 border-b border-white/20">
-          <div className="p-12 md:p-24 flex flex-col justify-center">
-            <h2 className="text-6xl md:text-[10rem] font-bold tracking-tighter leading-none uppercase mb-20 mix-blend-difference">
+          <div className="py-12 pl-8 pr-12 md:py-24 md:pl-12 md:pr-24 flex flex-col justify-center">
+            <h2 className="text-4xl md:text-[7rem] font-bold tracking-tighter leading-none uppercase mb-20 mix-blend-difference">
               CAPA<br/>BILITIES
             </h2>
             <div className="grid grid-cols-2 gap-8">
               {techItems.map((tech) => (
-                <div key={tech} className="flex items-center gap-4 font-mono text-[10px] tracking-widest text-white/60">
+                <div key={tech} className="flex items-center gap-4 font-mono text-[12px] tracking-widest text-white/60">
                   <div className="w-1.5 h-1.5 bg-accent" />
                   {tech}
                 </div>
