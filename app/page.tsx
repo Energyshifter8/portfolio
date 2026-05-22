@@ -12,7 +12,7 @@ const techItems = [
 const projects = [
   { 
     id: "01", 
-    title: "USER_SYSTEM", 
+    title: "MARKETING_WEB", 
     role: "FULL-STACK / REACT", 
     status: "STABLE",
     link: "https://github.com/Energyshifter8/user" 
@@ -78,10 +78,6 @@ export default function Home() {
               
               <div className="space-y-4 pt-20">
                 <div className="w-full h-[1px] bg-white/20" />
-                <div className="flex justify-between">
-                  <span>LATENCY: 14MS</span>
-                  <span>ENCRYPTION: AES-256</span>
-                </div>
               </div>
             </div>
           </div>
