@@ -53,6 +53,21 @@ export default function Home() {
               <div className="font-mono text-[10px] text-accent tracking-[0.8em] mb-10">
                 [ SYSTEM STATUS: OPERATIONAL ]
               </div>
+              
+              <div className="mb-8 w-full max-w-md opacity-70 hover:opacity-100 transition-opacity duration-500">
+                <iframe 
+                  style={{ borderRadius: '0px' }} 
+                  src="https://open.spotify.com/embed/playlist/4Ob7RFVWLtMCMjgnWnQuQa?utm_source=generator&theme=0" 
+                  width="100%" 
+                  height="152" 
+                  frameBorder="0" 
+                  allowFullScreen={true}
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                  loading="lazy"
+                  className="grayscale invert brightness-200 contrast-125"
+                ></iframe>
+              </div>
+
               <motion.div style={{ skewY: skewVelocity }} className="relative">
                 <h1 className="text-[14vw] md:text-[10rem] font-bold leading-[0.75] tracking-tighter uppercase mix-blend-difference whitespace-nowrap">
                   TEMUULEN B.
