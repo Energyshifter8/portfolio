@@ -54,18 +54,36 @@ export default function Home() {
                 [ SYSTEM STATUS: OPERATIONAL ]
               </div>
               
-              <div className="mb-8 w-full max-w-md opacity-70 hover:opacity-100 transition-opacity duration-500">
-                <iframe 
-                  style={{ borderRadius: '0px' }} 
-                  src="https://open.spotify.com/embed/playlist/4Ob7RFVWLtMCMjgnWnQuQa?utm_source=generator&theme=0" 
-                  width="100%" 
-                  height="152" 
-                  frameBorder="0" 
-                  allowFullScreen={true}
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                  loading="lazy"
-                  className="grayscale invert brightness-200 contrast-125"
-                ></iframe>
+              <div className="mb-12 w-full max-w-3xl group transition-all duration-700">
+                <div className="flex justify-between items-end mb-4 font-mono text-[9px] tracking-[0.2em] text-white/30 uppercase">
+                  <div className="flex gap-6">
+                    <span className="flex items-center gap-2">
+                      <span className="w-1 h-1 bg-accent animate-pulse" />
+                      AUDIO_LINK: ACTIVE
+                    </span>
+                    <span className="hidden md:block">VOL_REF: 0.82</span>
+                  </div>
+                  <div className="text-right">
+                    [ PLAYLIST_04 / 2026 ]
+                  </div>
+                </div>
+                
+                <div className="relative p-1 border border-white/10 group-hover:border-accent/40 transition-colors duration-500 bg-black/20 backdrop-blur-sm">
+                  <iframe 
+                    style={{ borderRadius: '0px' }} 
+                    src="https://open.spotify.com/embed/playlist/4Ob7RFVWLtMCMjgnWnQuQa?utm_source=generator&theme=0" 
+                    width="100%" 
+                    height="352" 
+                    frameBorder="0" 
+                    allowFullScreen={true}
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                    loading="lazy"
+                    className="grayscale invert brightness-200 contrast-125 opacity-70 group-hover:opacity-100 transition-all duration-700"
+                  ></iframe>
+                  
+                  <div className="absolute -bottom-2 -right-2 w-4 h-4 border-r border-b border-accent/40" />
+                  <div className="absolute -top-2 -left-2 w-4 h-4 border-l border-t border-accent/40" />
+                </div>
               </div>
 
               <motion.div style={{ skewY: skewVelocity }} className="relative">
