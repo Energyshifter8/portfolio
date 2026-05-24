@@ -171,9 +171,9 @@ export default function Home() {
           
           <div className="p-12 md:p-32 flex flex-col justify-between min-h-[70vh]">
             <div className="space-y-12 max-w-xl">
-              <div className="font-mono text-[10px] text-white/20 tracking-widest uppercase">## PHILOSOPHY_MANIFESTO</div>
+              <div className="font-mono text-[10px] text-white/20 tracking-widest uppercase">## INTERNSHIP_OPPORTUNITIES</div>
               <p className="text-xl md:text-3xl font-mono uppercase leading-tight text-white/80">
-                BRUTALISM IS NOT ABOUT UGLINESS. IT IS ABOUT THE TRUTH OF THE MATERIALS. THE TRUTH OF THE CODE.
+                Би ШУТИС-ийн компьютерийн ухаан чиглэлээр суралцдаг оюутан бөгөөд программ хангамж Front-end, Back-end чиглэлээр дадлага (internship) хийх газар, боломж хайж байна.
               </p>
             </div>
             
