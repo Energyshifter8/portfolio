@@ -28,8 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] text-white selection:bg-white selection:text-black`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] text-white selection:bg-white selection:text-black relative`}
       >
+        <div className="crt-overlay" />
+        <div className="crt-vignette" />
         <CustomCursor />
         <CursorTrailEffect />
         <SmoothScrolling>

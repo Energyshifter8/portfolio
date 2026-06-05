@@ -1,12 +1,21 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useVelocity, useTransform, useSpring } from 'framer-motion';
 import Loader from '@/components/ui/Loader';
 import Geometry from '@/components/ui/Geometry';
+import BootSequence from '@/components/ui/BootSequence';
+import SkillBar from '@/components/ui/SkillBar';
 
 const techItems = [
-  "NEXT.JS", "TYPESCRIPT", "THREE.JS", "WEBGL", "FRAMER MOTION", "TAILWIND", "GSAP", "LENIS"
+  { name: "NEXT.JS", level: 92 },
+  { name: "TYPESCRIPT", level: 88 },
+  { name: "THREE.JS", level: 75 },
+  { name: "WEBGL", level: 70 },
+  { name: "FRAMER MOTION", level: 95 },
+  { name: "REACT NATIVE", level: 82 },
+  { name: "GSAP / LOTTIE", level: 85 },
+  { name: "TAILWIND CSS", level: 90 }
 ];
 
 const projects = [
@@ -15,6 +24,9 @@ const projects = [
     title: "MARKETING_WEB", 
     role: "FULL-STACK / REACT", 
     status: "STABLE",
+    size: "4.2MB",
+    date: "JUN-05-2026",
+    perms: "drwxr-xr-x",
     link: "https://github.com/Energyshifter8/user" 
   },
   { 
@@ -22,12 +34,37 @@ const projects = [
     title: "GRAVITY_SIM", 
     role: "PHYSICS ENGINE / C++", 
     status: "EXPERIMENTAL",
+    size: "12.8MB",
+    date: "MAY-12-2026",
+    perms: "drw-------",
     link: "https://github.com/Energyshifter8/gravity_sim"
+  },
+  { 
+    id: "03", 
+    title: "QUANTUM_INT", 
+    role: "WEBGL / DASHBOARD", 
+    status: "STABLE",
+    size: "8.5MB",
+    date: "MAR-24-2026",
+    perms: "drwxr-xr-x",
+    link: "https://github.com/Energyshifter8/quantum-interface"
+  },
+  { 
+    id: "04", 
+    title: "ECHO_AUDIO", 
+    role: "AUDIO_VIS / CANVAS", 
+    status: "STABLE",
+    size: "2.1MB",
+    date: "JAN-15-2026",
+    perms: "drwxr-xr-x",
+    link: "https://github.com/Energyshifter8/echo-audio"
   },
 ];
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const [showBoot, setShowBoot] = useState(false);
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
   
   const { scrollYProgress } = useScroll();
   const scrollVelocity = useVelocity(scrollYProgress);
@@ -36,11 +73,25 @@ export default function Home() {
     damping: 100
   });
 
+  useEffect(() => {
+    const hasBooted = sessionStorage.getItem('hasBooted');
+    if (!hasBooted) {
+      setShowBoot(true);
+      setLoading(false); // Skip standard loader if booting
+    }
+  }, []);
+
+  const handleBootComplete = () => {
+    sessionStorage.setItem('hasBooted', 'true');
+    setShowBoot(false);
+  };
+
   return (
     <>
       <div className="noise-bg" />
       <AnimatePresence>
-        {loading && <Loader onComplete={() => setLoading(false)} />}
+        {showBoot && <BootSequence onComplete={handleBootComplete} />}
+        {loading && !showBoot && <Loader onComplete={() => setLoading(false)} />}
       </AnimatePresence>
 
       <Geometry />
@@ -50,7 +101,7 @@ export default function Home() {
         <section className="min-h-screen flex flex-col border-b border-white/20">
           <div className="flex-1 grid grid-cols-1 md:grid-cols-12 divide-x divide-white/20">
             <div className="md:col-span-8 flex flex-col justify-end p-8 md:p-20">
-              <div className="font-mono text-[10px] text-accent tracking-[0.8em] mb-10">
+              <div className="font-mono text-[10px] text-accent tracking-[0.8em] mb-10 animate-glitch">
                 [ SYSTEM STATUS: OPERATIONAL ]
               </div>
               
@@ -63,7 +114,17 @@ export default function Home() {
                     </span>
                     <span className="hidden md:block">VOL_REF: 0.82</span>
                   </div>
-                  <div className="text-right">
+                  <div className="text-right flex items-center gap-4">
+                    <div className="flex gap-1">
+                      {[1,2,3,4,5].map(i => (
+                        <motion.div 
+                          key={i}
+                          animate={{ height: [2, Math.random() * 10 + 2, 2] }}
+                          transition={{ repeat: Infinity, duration: 0.5, delay: i * 0.1 }}
+                          className="w-[2px] bg-accent/40"
+                        />
+                      ))}
+                    </div>
                     [ PLAYLIST_04 / 2026 ]
                   </div>
                 </div>
@@ -87,8 +148,8 @@ export default function Home() {
               </div>
 
               <motion.div style={{ skewY: skewVelocity }} className="relative">
-                <h1 className="text-[14vw] md:text-[10rem] font-bold leading-[0.75] tracking-tighter uppercase mix-blend-difference whitespace-nowrap">
-                  TEMUULEN B.
+                <h1 className="text-[14vw] md:text-[10rem] font-bold leading-[0.75] tracking-tighter uppercase mix-blend-difference whitespace-nowrap chromatic-aberration">
+                  TEMUULEN B.<span className="animate-blink text-accent ml-2">█</span>
                 </h1>
                 <div className="absolute -top-10 -right-10 font-mono text-[10px] text-white/30 hidden md:block">
                   COORD_X: 47.9188<br/>COORD_Y: 106.9176
@@ -102,10 +163,10 @@ export default function Home() {
                   A DIGITAL CRAFTSMAN FOCUSED ON THE INTERSECTION OF SYSTEM ARCHITECTURE AND EXPERIMENTAL DESIGN.
                 </p>
                 <div className="space-y-2">
-                  <p>[01] // SELECTED_WORK</p>
-                  <p>[02] // ARCHIVE_FILES</p>
-                  <p>[03] // SYSTEM_SPECS</p>
-                  <p>[04] // CONTACT_TERM</p>
+                  <p className="hover:text-accent cursor-pointer transition-colors" data-tooltip="GO_TO: WORK">[01] // SELECTED_WORK</p>
+                  <p className="hover:text-accent cursor-pointer transition-colors" data-tooltip="GO_TO: ARCHIVE">[02] // ARCHIVE_FILES</p>
+                  <p className="hover:text-accent cursor-pointer transition-colors" data-tooltip="GO_TO: SPECS">[03] // SYSTEM_SPECS</p>
+                  <p className="hover:text-accent cursor-pointer transition-colors" data-tooltip="GO_TO: CONTACT">[04] // CONTACT_TERM</p>
                 </div>
               </div>
               
@@ -118,15 +179,19 @@ export default function Home() {
 
         {/* --- DATA TABLE WORK --- */}
         <section className="border-b border-white/20">
-          <div className="p-8 md:p-12 bg-white/5 font-mono text-[9px] tracking-[0.5em] text-white/40 uppercase">
-            ## FILE_SYSTEM / PROJECTS
+          <div className="p-8 md:p-12 bg-white/5 font-mono text-[9px] tracking-[0.5em] text-white/40 uppercase flex justify-between items-center">
+            <span>## FILE_SYSTEM / PROJECTS</span>
+            <span className="hidden md:block">TOTAL_SIZE: 17.0MB</span>
           </div>
           <div className="divide-y divide-white/20">
             {projects.map((p) => (
               <motion.div 
                 key={p.id}
+                onMouseEnter={() => setHoveredProject(p.id)}
+                onMouseLeave={() => setHoveredProject(null)}
                 whileHover={{ backgroundColor: "rgba(255,255,255,0.03)" }}
-                className="grid grid-cols-1 md:grid-cols-12 p-8 md:p-12 items-center group cursor-pointer relative"
+                className="grid grid-cols-1 md:grid-cols-12 p-8 md:p-12 items-center group cursor-pointer relative overflow-hidden"
+                data-tooltip={p.status === "CLASSIFIED" ? "ACCESS_DENIED" : "READ_FILE"}
               >
                 <a 
                   href={p.link} 
@@ -134,20 +199,55 @@ export default function Home() {
                   rel="noopener noreferrer" 
                   className="absolute inset-0 z-20"
                 />
-                <div className="md:col-span-1 font-mono text-[9px] text-white/20">{p.id}</div>
-                <div className="md:col-span-6">
-                  <h3 className="text-3xl md:text-7xl font-bold tracking-tighter uppercase group-hover:text-accent transition-colors duration-500">
+                
+                <div className="md:col-span-1 font-mono text-[9px] text-white/20">
+                  {p.perms}
+                </div>
+                
+                <div className="md:col-span-6 flex items-center gap-6">
+                  <div className="font-mono text-[9px] text-white/20 hidden md:block">{p.id}</div>
+                  <h3 className="text-3xl md:text-7xl font-bold tracking-tighter uppercase group-hover:text-accent transition-colors duration-500 flex items-center gap-4">
                     {p.title}
+                    {hoveredProject === p.id && (
+                      <motion.span 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-xs font-mono text-accent animate-pulse"
+                      >
+                        _
+                      </motion.span>
+                    )}
                   </h3>
                 </div>
-                <div className="md:col-span-3 font-mono text-[9px] text-white/40 tracking-widest mt-4 md:mt-0">
-                  {p.role}
+
+                <div className="md:col-span-2 font-mono text-[9px] text-white/40 tracking-widest mt-4 md:mt-0 flex flex-col gap-1">
+                  <span className="text-white/60">{p.role}</span>
+                  <span className="text-[8px] opacity-50">{p.size} // {p.date}</span>
                 </div>
-                <div className="md:col-span-2 text-right">
+
+                <div className="md:col-span-3 text-right flex items-center justify-end gap-4">
+                  <div className={`w-2 h-2 rounded-full animate-pulse ${
+                    p.status === 'STABLE' ? 'bg-green-500' : 
+                    p.status === 'EXPERIMENTAL' ? 'bg-yellow-500' : 'bg-red-600'
+                  }`} />
                   <span className="inline-block px-3 py-1 border border-white/20 font-mono text-[7px] uppercase tracking-[0.3em]">
                     {p.status}
                   </span>
                 </div>
+
+                {/* Hover Background Detail */}
+                <AnimatePresence>
+                  {hoveredProject === p.id && (
+                    <motion.div 
+                      initial={{ x: "100%" }}
+                      animate={{ x: "0%" }}
+                      exit={{ x: "100%" }}
+                      className="absolute right-0 top-0 h-full w-1/3 bg-accent/5 pointer-events-none -z-10 flex items-center justify-center font-mono text-[60px] opacity-10 font-bold italic"
+                    >
+                      {p.id}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             ))}
           </div>
@@ -159,22 +259,36 @@ export default function Home() {
             <h2 className="text-3xl md:text-[5rem] font-bold tracking-tighter leading-none uppercase mb-16 mix-blend-difference">
               CAPABILITIES
             </h2>
-            <div className="grid grid-cols-2 gap-x-12 gap-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10">
               {techItems.map((tech) => (
-                <div key={tech} className="flex items-center gap-4 font-mono text-[10px] tracking-widest text-white/60">
-                  <div className="w-1.5 h-1.5 bg-accent" />
-                  {tech}
-                </div>
+                <SkillBar key={tech.name} name={tech.name} level={tech.level} />
               ))}
             </div>
           </div>
           
           <div className="p-12 md:p-32 flex flex-col justify-between min-h-[70vh]">
             <div className="space-y-12 max-w-xl">
-              <div className="font-mono text-[10px] text-white/20 tracking-widest uppercase">## INTERNSHIP_OPPORTUNITIES</div>
-              <p className="text-xl md:text-3xl font-mono uppercase leading-tight text-white/80">
-                Би ШУТИС-ийн компьютерийн ухаан чиглэлээр суралцдаг оюутан бөгөөд программ хангамж Front-end, Back-end чиглэлээр дадлага (internship) хийх газар, боломж хайж байна.
-              </p>
+              <div className="font-mono text-[10px] text-white/20 tracking-widest uppercase flex items-center gap-4">
+                <span className="w-8 h-[1px] bg-white/10" />
+                ## INTERNSHIP_OPPORTUNITIES
+              </div>
+              <div className="space-y-8">
+                <p className="text-xl md:text-3xl font-mono uppercase leading-tight text-white/80">
+                  Би ШУТИС-ийн компьютерийн ухаан чиглэлээр суралцдаг оюутан бөгөөд программ хангамж Front-end, Back-end чиглэлээр дадлага (internship) хийх газар, боломж хайж байна.
+                </p>
+                <p className="text-sm md:text-base font-mono uppercase leading-tight text-white/40 italic max-w-lg">
+                  // Computer Science student at MUST, seeking internship opportunities in Front-end or Back-end development to apply technical skills in a professional environment.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <div className="px-4 py-2 bg-accent/5 border border-accent/20 text-accent font-mono text-[9px] uppercase tracking-widest flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-accent animate-pulse" />
+                  [ STATUS: AVAILABLE_FOR_HIRE ]
+                </div>
+                <div className="px-4 py-2 bg-white/5 border border-white/10 text-white/40 font-mono text-[9px] uppercase tracking-widest">
+                  [ LOC: ULAANBAATAR, MN ]
+                </div>
+              </div>
             </div>
             
             <div className="space-y-8 mt-16 md:mt-0">
