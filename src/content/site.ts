@@ -12,8 +12,9 @@ export const site = {
   tagline: "I build fast, careful interfaces and the systems behind them.",
   status: "available", // shown in the menu bar with a blinking light
   socials: [
-    { label: "GitHub", handle: "github.com/", href: "https://github.com/" },
-    { label: "LinkedIn", handle: "/in/", href: "https://www.linkedin.com/" },
+    { label: "GitHub", handle: "github.com/Energyshifter8", href: "https://github.com/Energyshifter8" },
+    { label: "Instagram", handle: "@energyshifter8", href: "https://www.instagram.com/energyshifter8/" },
+    { label: "Facebook", handle: "facebook.com/tem.len.b.623027", href: "https://www.facebook.com/tem.len.b.623027" },
   ],
 }
 

@@ -7,7 +7,7 @@ import { site } from "@/content/site"
 
 export const metadata: Metadata = { title: "Contact" }
 
-const glyph: Record<string, string> = { GitHub: "⌥", LinkedIn: "☍" }
+const glyph: Record<string, string> = { GitHub: "⌥", Instagram: "◎", Facebook: "f", LinkedIn: "☍" }
 
 function Links({ className }: { className?: string }) {
   return (
