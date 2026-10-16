@@ -10,10 +10,21 @@ export const site = {
   location: "Ulaanbaatar, Mongolia",
   email: "temuulen.b@tanasoft.mn",
   tagline: "I build fast, careful interfaces and the systems behind them.",
+  status: "available", // shown in the menu bar with a blinking light
   socials: [
-    { label: "GitHub", href: "https://github.com/" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/" },
+    { label: "GitHub", handle: "github.com/", href: "https://github.com/" },
+    { label: "LinkedIn", handle: "/in/", href: "https://www.linkedin.com/" },
   ],
+}
+
+// Contact window copy and the two optional dropdowns.
+export const contact = {
+  note: "Usually replies within two working days",
+  fromPlaceholder: "you@company.com",
+  subjectPlaceholder: "Web app / Dashboard / Collaboration",
+  messagePlaceholder: "Hi Temuulen,\n\nWe're working on…\nWhat we need, the team and the timeline…",
+  projectTypes: ["Web app or dashboard", "Interface design", "Mobile app", "Something else"],
+  timelines: ["As soon as possible", "Within 3 months", "Later", "Let's discuss"],
 }
 
 export type Project = {
@@ -124,29 +135,34 @@ export const experience = [
     period: "2024 — now",
     title: "Software Engineer",
     org: "Tanasoft",
+    branch: "work",
     detail: "Building product interfaces and internal platforms with React, TypeScript and Node.",
   },
   {
     period: "2022 — 2024",
     title: "Front-end Developer",
     org: "Placeholder Studio",
+    branch: "work",
     detail: "Shipped marketing sites and dashboards for clients across finance and retail.",
   },
   {
     period: "2020 — 2022",
     title: "Junior Developer",
     org: "Placeholder Agency",
+    branch: "work",
     detail: "Started with HTML, CSS and a lot of jQuery; moved the team to React.",
   },
   {
     period: "2016 — 2020",
     title: "B.Sc. Computer Science",
     org: "Placeholder University",
+    branch: "study",
     detail: "Graphics, algorithms and too many late nights in the lab.",
   },
 ]
 
 export const profile = {
+  aboutLabels: ["Today", "Background"], // headings over the two `about` paragraphs
   about: [
     "I'm a software engineer based in Ulaanbaatar. I care about interfaces that feel quick, read clearly and hold up under real use.",
     "Most of my work sits between design and engineering: turning rough ideas into products, then making them fast and reliable.",
@@ -158,4 +174,6 @@ export const profile = {
     { group: "Tools", items: ["Figma", "Git", "Docker", "Vercel"] },
   ],
   languages: ["Mongolian — native", "English — professional"],
+  skillsTitle: "What I work with",
+  cta: { text: "Got an idea that needs building?", button: "Write to me" },
 }

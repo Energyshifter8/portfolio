@@ -2,12 +2,12 @@ import Link from "next/link"
 
 export default function NotFound() {
   return (
-    <main className="grid h-dvh place-items-center px-4 text-center">
+    <main className="grid min-h-dvh place-items-center px-5 pt-[72px] text-center">
       <div>
-        <p className="font-gothic text-7xl text-signal">404</p>
-        <p className="mt-4 text-2xl">File not found.</p>
-        <Link href="/" className="mt-6 inline-block text-xl text-primary hover:underline">
-          ← back to desktop
+        <p className="font-display text-[clamp(96px,16vw,220px)] leading-[.9] text-creme">404</p>
+        <p className="mt-4 text-[15px]">File not found.</p>
+        <Link href="/" className="os-btn mt-8">
+          ← Back to desktop
         </Link>
       </div>
     </main>
