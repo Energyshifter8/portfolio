@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import { DitherOrb } from "@/components/dither-orb"
+import { DitherPortrait } from "@/components/dither-portrait"
 import { site } from "@/content/site"
 import { cn } from "@/lib/utils"
 
@@ -29,15 +29,22 @@ export default function Home() {
         </Link>
       ))}
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
-        <DitherOrb size={168} className="h-64 w-64 sm:h-80 sm:w-80" />
-        <p className="-mt-6 bg-background/70 px-3 text-sm tracking-[0.35em] text-signal uppercase sm:text-base">
-          {site.role}
-        </p>
-        <h1 className="mt-2 text-center font-gothic text-6xl leading-none text-foreground glow sm:text-8xl">
-          {site.name}
-        </h1>
-        <p className="mt-6 max-w-md text-center text-lg text-muted-foreground">{site.tagline}</p>
+      {/* padded to centre between the corner links; on short phones the portrait shrinks to fit */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-4 pt-16 md:pt-12">
+        <DitherPortrait src="/portrait.png" className="h-[min(46vh,calc(100dvh-27rem))] w-auto md:h-[58vh]" />
+        {/* pulled up so the role and name sit over the faded bottom of the portrait */}
+        <div className="relative z-10 -mt-[12vh] flex flex-col items-center md:-mt-[16vh]">
+          <p className="bg-background/80 px-3 text-sm tracking-[0.35em] text-signal uppercase sm:text-base">
+            {site.role}
+          </p>
+          <h1
+            data-text={site.name}
+            className="glitch mt-2 text-center font-gothic text-6xl leading-none text-foreground glow-halo sm:text-8xl"
+          >
+            {site.name}
+          </h1>
+          <p className="mt-6 max-w-md text-center text-lg text-muted-foreground">{site.tagline}</p>
+        </div>
       </div>
     </main>
   )

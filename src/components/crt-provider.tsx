@@ -23,7 +23,10 @@ export function CrtProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <CrtContext.Provider value={{ crt, setCrt }}>
-      <div className={crt ? "crt min-h-dvh" : "min-h-dvh"}>{children}</div>
+      <div className={crt ? "crt min-h-dvh" : "min-h-dvh"}>
+        {children}
+        {crt && <div aria-hidden className="film-grain" />}
+      </div>
     </CrtContext.Provider>
   )
 }

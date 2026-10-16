@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 
-import { DitherOrb } from "@/components/dither-orb"
+import { DitherPortrait } from "@/components/dither-portrait"
 import { WindowFrame } from "@/components/window-frame"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -21,7 +21,7 @@ export default function ProfilePage() {
           </p>
         </div>
         <div className="hidden justify-center md:flex">
-          <DitherOrb size={96} className="size-52" />
+          <DitherPortrait src="/portrait.png" resolution={120} className="h-64 w-auto" />
         </div>
       </div>
 
