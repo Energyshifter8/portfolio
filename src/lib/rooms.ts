@@ -1,7 +1,14 @@
+import type { Content } from "@/content"
+
 // The four "rooms" of the desktop, in corner order (top-left, top-right, bottom-left, bottom-right).
-export const rooms = [
-  { href: "/projects", file: "projects.vol", label: "Projects", note: "the projects", key: "1" },
-  { href: "/experience", file: "career.log", label: "Experience", note: "the career", key: "2" },
-  { href: "/profile", file: "profile.sys", label: "Profile", note: "the profile", key: "3" },
-  { href: "/contact", file: "contact.app", label: "Contact", note: "write to me", key: "4" },
-]
+const base = [
+  { id: "projects", href: "/projects", file: "projects.vol", key: "1" },
+  { id: "experience", href: "/experience", file: "career.log", key: "2" },
+  { id: "profile", href: "/profile", file: "profile.sys", key: "3" },
+  { id: "contact", href: "/contact", file: "contact.app", key: "4" },
+] as const
+
+export type Room = (typeof base)[number] & { label: string; note: string }
+
+/** Rooms with their labels in the page's language. `href` has no locale prefix. */
+export const getRooms = (ui: Content["ui"]): Room[] => base.map((r) => ({ ...r, ...ui.rooms[r.id] }))

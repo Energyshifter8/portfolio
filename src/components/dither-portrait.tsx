@@ -2,7 +2,8 @@
 
 import * as React from "react"
 
-import { site } from "@/content/site"
+import { fmt } from "@/content"
+import { useI18n } from "@/i18n/provider"
 import { cn } from "@/lib/utils"
 
 // The portrait as a field of short horizontal dashes. Each cell of a low-res sample
@@ -182,6 +183,7 @@ export function DitherPortrait({
   /** drag and scroll-wheel to rotate */
   interactive?: boolean
 }) {
+  const { site, ui } = useI18n()
   const boxRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const [aspect, setAspect] = React.useState(5 / 6)
@@ -511,7 +513,7 @@ export function DitherPortrait({
     <div
       ref={boxRef}
       role="img"
-      aria-label={`Portrait of ${site.name}`}
+      aria-label={fmt(ui.desktop.portrait, { name: site.name })}
       style={{ aspectRatio: aspect }}
       className={cn("relative select-none", interactive && "cursor-grab touch-none", className)}
     >

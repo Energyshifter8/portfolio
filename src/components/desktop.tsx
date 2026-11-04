@@ -2,8 +2,8 @@ import Link from "next/link"
 
 import { DitherPortrait } from "@/components/dither-portrait"
 import { Reveal } from "@/components/reveal"
-import { site } from "@/content/site"
-import { rooms } from "@/lib/rooms"
+import type { Localized } from "@/content"
+import { getRooms } from "@/lib/rooms"
 import { cn } from "@/lib/utils"
 
 // corner placement: top/bottom clamp(18px,4vh,40px), left/right clamp(26px,4vw,64px)
@@ -15,7 +15,9 @@ const corner = [
 ]
 
 /** The home "desktop": portrait, name and the four corner rooms. */
-export function Desktop({ inert = false }: { inert?: boolean }) {
+export function Desktop({ content, inert = false }: { content: Localized; inert?: boolean }) {
+  const { site, ui, href } = content
+  const rooms = getRooms(ui)
   return (
     <main inert={inert} className="fixed inset-x-0 top-[49px] bottom-0 overflow-hidden">
       <h1 className="sr-only">
@@ -53,13 +55,13 @@ export function Desktop({ inert = false }: { inert?: boolean }) {
       </div>
 
       <nav
-        aria-label="Rooms"
+        aria-label={ui.desktop.roomsLabel}
         className="max-[500px]:absolute max-[500px]:inset-x-4 max-[500px]:bottom-[18px] max-[500px]:grid max-[500px]:grid-cols-2 max-[500px]:gap-x-2.5 max-[500px]:gap-y-3.5"
       >
         {rooms.map((r, i) => (
           <Link
             key={r.href}
-            href={r.href}
+            href={href(r.href)}
             className={cn(
               "group absolute z-10 flex flex-col gap-1.5 outline-none max-[500px]:static max-[500px]:items-start max-[500px]:text-left",
               corner[i],
@@ -89,7 +91,7 @@ export function Desktop({ inert = false }: { inert?: boolean }) {
                 i % 2 ? "translate-x-2" : "-translate-x-2",
               )}
             >
-              Enter ▸
+              {ui.desktop.enter}
             </span>
           </Link>
         ))}

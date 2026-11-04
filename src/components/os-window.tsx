@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 export function OsWindow({
   title,
   closeHref = "/",
+  closeLabel = "Close window",
   className,
   bodyClassName,
   children,
@@ -13,6 +14,7 @@ export function OsWindow({
 }: {
   title: string
   closeHref?: string
+  closeLabel?: string
   className?: string
   bodyClassName?: string
   children: React.ReactNode
@@ -26,7 +28,7 @@ export function OsWindow({
       <div className="relative flex items-center gap-0.5 border-b-[3px] border-encre px-2 py-[3px] text-[14px]">
         <Link
           href={closeHref}
-          aria-label="Close window"
+          aria-label={closeLabel}
           className="group/x grid h-[34px] w-[38px] shrink-0 place-items-center focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-encre focus-visible:outline-dashed max-[720px]:size-10"
         >
           <span className="relative block size-[22px] rounded-full border-2 border-current transition-[background-color,color,box-shadow] duration-100 ease-out group-hover/x:bg-encre group-hover/x:text-papier group-hover/x:shadow-[0_0_0_2px_color-mix(in_srgb,var(--encre)_18%,transparent)] group-active/x:scale-[.94] before:absolute before:top-1/2 before:left-1/2 before:h-0.5 before:w-[9px] before:-translate-1/2 before:rotate-45 before:bg-current after:absolute after:top-1/2 after:left-1/2 after:h-0.5 after:w-[9px] after:-translate-1/2 after:-rotate-45 after:bg-current" />

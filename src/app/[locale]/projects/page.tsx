@@ -3,14 +3,19 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 import { Reveal } from "@/components/reveal"
-import { projects } from "@/content/site"
+import { pageContent, type LocaleParams } from "@/i18n/server"
 
-export const metadata: Metadata = { title: "Projects" }
+type Props = { params: LocaleParams }
 
-export default function ProjectsPage() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return { title: (await pageContent(params)).ui.rooms.projects.label }
+}
+
+export default async function ProjectsPage({ params }: Props) {
+  const { projects, ui, href } = await pageContent(params)
   return (
     <main className="relative min-h-dvh pt-[72px]">
-      <h1 className="sr-only">Projects</h1>
+      <h1 className="sr-only">{ui.rooms.projects.label}</h1>
 
       {/* top and bottom fades, 14% of the room each */}
       <div aria-hidden className="pointer-events-none fixed inset-x-0 top-[72px] z-[2] h-[14%] bg-gradient-to-b from-papier to-transparent" />
@@ -20,7 +25,7 @@ export default function ProjectsPage() {
         {projects.map((p, i) => (
           <li key={p.slug}>
             <Link
-              href={`/projects/${p.slug}`}
+              href={href(`/projects/${p.slug}`)}
               className="group flex w-max max-w-full items-baseline gap-[.35em] py-[.5em] outline-none focus-visible:outline-2 focus-visible:outline-creme focus-visible:outline-dashed max-[500px]:gap-[.3em]"
             >
               <span className="min-w-[3.2em] text-[clamp(11px,1.5vh,14px)] tracking-[0.1em] text-braise max-[500px]:min-w-[2.8em] max-[500px]:text-[9px]">

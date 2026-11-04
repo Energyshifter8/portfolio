@@ -4,18 +4,20 @@ import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 
 import { Reveal } from "@/components/reveal"
-import { projects } from "@/content/site"
+import { fmt } from "@/content"
+import { projectBase } from "@/content/shared"
+import { pageContent } from "@/i18n/server"
 
-type Props = { params: Promise<{ slug: string }> }
+type Props = { params: Promise<{ locale: string; slug: string }> }
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }))
+  return projectBase.map((p) => ({ slug: p.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const p = projects.find((p) => p.slug === slug)
-  return { title: p?.title ?? "Project", description: p?.summary }
+  const p = (await pageContent(params)).projects.find((p) => p.slug === slug)
+  return { title: p?.title, description: p?.summary }
 }
 
 const shell = "mx-auto w-[min(100%,1500px)] px-[clamp(22px,5vw,80px)] max-[767px]:px-5"
@@ -26,6 +28,8 @@ const pad = (n: number) => String(n).padStart(2, "0")
 
 export default async function ProjectPage({ params }: Props) {
   const { slug } = await params
+  const { projects, ui, href } = await pageContent(params)
+  const t = ui.project
   const i = projects.findIndex((p) => p.slug === slug)
   if (i === -1) notFound()
   const p = projects[i]
@@ -33,12 +37,12 @@ export default async function ProjectPage({ params }: Props) {
   const next = projects[(i + 1) % projects.length]
 
   const spec: [string, React.ReactNode][] = [
-    ["client", p.meta.client],
-    ["role", p.meta.role],
-    ["period", p.meta.period],
-    ["status", p.meta.status],
+    [t.spec.client, p.meta.client],
+    [t.spec.role, p.meta.role],
+    [t.spec.period, p.meta.period],
+    [t.spec.status, p.meta.status],
     [
-      "stack",
+      t.spec.stack,
       p.meta.stack.map((s) => (
         <span key={s} className="block">
           {s}
@@ -48,7 +52,7 @@ export default async function ProjectPage({ params }: Props) {
   ]
   if (p.meta.link)
     spec.push([
-      "link",
+      t.spec.link,
       <a
         key="l"
         href={p.meta.link.href}
@@ -89,7 +93,7 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </header>
 
-      <section aria-label={`About ${p.title}`} className={`${shell} pt-[70px] pb-[100px] max-[767px]:pt-[52px] max-[767px]:pb-16`}>
+      <section aria-label={fmt(t.about, { title: p.title })} className={`${shell} pt-[70px] pb-[100px] max-[767px]:pt-[52px] max-[767px]:pb-16`}>
         <div className="mt-10 max-w-[860px]">
           <div className="text-[16px] leading-[1.8] max-[767px]:text-[14px] max-[767px]:leading-[1.75]">
             {p.description.map((d, k) => (
@@ -136,14 +140,16 @@ export default async function ProjectPage({ params }: Props) {
       </section>
 
       {/* screenshots go here: framed plates with a "fig. NN" readout (the hero is fig. 01) */}
-      <section aria-label="Screenshots" className="grid gap-[60px] pb-[30px] max-[767px]:gap-[30px]">
+      <section aria-label={t.screenshots} className="grid gap-[60px] pb-[30px] max-[767px]:gap-[30px]">
         {p.figures.map((f, n) => (
           <figure
             key={f.caption}
             className="mx-auto w-[92%] max-w-[1200px] border border-encre bg-papier shadow-[6px_6px_0_var(--grid)] max-[767px]:w-full"
           >
             <div className="flex h-8 items-center justify-between gap-4 px-4 text-[8px] tracking-[0.12em] uppercase">
-              <span>fig. {pad(n + 2)}</span>
+              <span>
+                {t.fig} {pad(n + 2)}
+              </span>
               <figcaption className="truncate">{f.caption}</figcaption>
             </div>
             {f.src ? (
@@ -163,23 +169,23 @@ export default async function ProjectPage({ params }: Props) {
       </section>
 
       <footer className="pt-[70px]">
-        <nav aria-label="Back to the projects" className={`${shell} flex justify-between gap-4 py-3 text-[10px]`}>
-          <Link href={`/projects/${prev.slug}`} className="transition-colors duration-100 ease-[steps(2,end)] hover:text-creme">
+        <nav aria-label={t.back} className={`${shell} flex justify-between gap-4 py-3 text-[10px]`}>
+          <Link href={href(`/projects/${prev.slug}`)} className="transition-colors duration-100 ease-[steps(2,end)] hover:text-creme">
             ← {prev.title}
           </Link>
-          <Link href="/projects" className="transition-colors duration-100 ease-[steps(2,end)] hover:text-creme">
-            All projects ↗
+          <Link href={href("/projects")} className="transition-colors duration-100 ease-[steps(2,end)] hover:text-creme">
+            {t.all}
           </Link>
         </nav>
         <div className="mt-6 border-t border-grid">
           <Link
-            href={`/projects/${next.slug}`}
-            aria-label={`Next project: ${next.title}`}
+            href={href(`/projects/${next.slug}`)}
+            aria-label={fmt(t.nextAria, { title: next.title })}
             className="dot-field group relative isolate flex min-h-[max(480px,calc(100dvh-72px))] flex-col justify-end overflow-hidden text-creme max-[767px]:min-h-[max(420px,calc(100dvh-71px))]"
           >
             {next.cover && <Image src={next.cover} alt="" fill sizes="100vw" className="-z-10 object-cover object-top" />}
             <span className={`${shell} absolute inset-x-0 top-6 z-[2] text-[10px] leading-[1.5] text-encre`}>
-              Up next / {pad(((i + 1) % projects.length) + 1)}
+              {fmt(t.next, { n: pad(((i + 1) % projects.length) + 1) })}
             </span>
             <div aria-hidden className="absolute inset-0 -z-0 bg-[linear-gradient(#00000073,#0000_18%,#00000059_48%,#000000d9)]" />
             <div className={`${shell} relative z-[2] py-8`}>

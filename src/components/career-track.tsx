@@ -4,7 +4,7 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-export type Entry = { period: string; title: string; org: string; detail: string; branch: string }
+import type { Entry } from "@/content"
 
 // a short, stable "commit hash" for each entry
 function hash(s: string) {
@@ -14,7 +14,7 @@ function hash(s: string) {
 }
 
 /** Career entries as a horizontal log, oldest first: wheel, drag, arrow keys or the rail move between them. */
-export function CareerTrack({ entries, user }: { entries: Entry[]; user: string }) {
+export function CareerTrack({ entries, user, label }: { entries: Entry[]; user: string; label: string }) {
   const track = React.useRef<HTMLDivElement>(null)
   const panels = React.useRef<(HTMLElement | null)[]>([])
   const [cur, setCur] = React.useState(0)
@@ -102,7 +102,7 @@ export function CareerTrack({ entries, user }: { entries: Entry[]; user: string 
       <div
         ref={track}
         tabIndex={0}
-        aria-label="Career entries"
+        aria-label={label}
         onPointerDown={(ev) => {
           if (ev.pointerType !== "mouse" || !track.current) return
           drag.current = { x: ev.clientX, left: track.current.scrollLeft }

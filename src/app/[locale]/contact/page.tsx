@@ -3,13 +3,18 @@ import type { Metadata } from "next"
 import { MailForm } from "./mail-form"
 import { Desktop } from "@/components/desktop"
 import { OsWindow } from "@/components/os-window"
-import { site } from "@/content/site"
+import type { Localized } from "@/content"
+import { pageContent, type LocaleParams } from "@/i18n/server"
 
-export const metadata: Metadata = { title: "Contact" }
+type Props = { params: LocaleParams }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return { title: (await pageContent(params)).ui.rooms.contact.label }
+}
 
 const glyph: Record<string, string> = { GitHub: "⌥", Instagram: "◎", Facebook: "f", LinkedIn: "☍" }
 
-function Links({ className }: { className?: string }) {
+function Links({ content: { site, ui }, className }: { content: Localized; className?: string }) {
   return (
     <ul className={className}>
       {site.socials.map((s) => (
@@ -39,7 +44,7 @@ function Links({ className }: { className?: string }) {
             @
           </span>
           <span>
-            Email
+            {ui.contact.email}
             <span className="block text-[12px] opacity-80">{site.email}</span>
           </span>
         </a>
@@ -48,28 +53,34 @@ function Links({ className }: { className?: string }) {
   )
 }
 
-export default function ContactPage() {
+export default async function ContactPage({ params }: Props) {
+  const content = await pageContent(params)
+  const { ui, href } = content
   return (
     <>
-      <Desktop inert />
+      <Desktop content={content} inert />
       {/* scrim over the desktop; the windows sit on top */}
       <div aria-hidden className="fixed inset-x-0 top-[72px] bottom-0 z-[100] bg-papier/65" />
-      <div role="dialog" aria-modal="true" aria-label="Contact" className="fixed inset-x-0 top-[72px] bottom-0 z-[110] overflow-y-auto">
+      <div role="dialog" aria-modal="true" aria-label={ui.contact.dialog} className="fixed inset-x-0 top-[72px] bottom-0 z-[110] overflow-y-auto">
         <div className="relative mx-auto w-[976px] max-w-[calc(100vw-40px)] pt-20 pb-10 max-[1015px]:w-[min(680px,calc(100vw-40px))] max-[720px]:pt-0">
           <OsWindow
             id="mail"
-            title="contact.app — new message"
+            title={ui.contact.windowTitle}
+            closeHref={href()}
+            closeLabel={ui.window.close}
             className="w-[min(680px,100%)] max-[720px]:fixed max-[720px]:inset-x-2 max-[720px]:top-[73px] max-[720px]:bottom-2 max-[720px]:w-auto"
           >
             <MailForm />
-            <Links className="hidden border-t-[3px] border-encre max-[1015px]:block" />
+            <Links content={content} className="hidden border-t-[3px] border-encre max-[1015px]:block" />
           </OsWindow>
           <OsWindow
             id="links"
             title="links.url"
+            closeHref={href()}
+            closeLabel={ui.window.close}
             className="absolute top-[104px] right-0 w-[270px] max-[1015px]:hidden"
           >
-            <Links />
+            <Links content={content} />
           </OsWindow>
         </div>
       </div>

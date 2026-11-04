@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { contact, site } from "@/content/site"
+import { useI18n } from "@/i18n/provider"
 import { cn } from "@/lib/utils"
 
 const field = "flex items-stretch border-b-2 border-encre text-[14.5px] focus-within:shadow-[inset_3px_0_0_var(--encre)]"
@@ -13,6 +13,8 @@ const input =
 
 /** A static site has no mail server, so "send" composes the message in the visitor's mail app. */
 export function MailForm() {
+  const { contact, site, ui } = useI18n()
+  const t = ui.contact
   const [status, setStatus] = React.useState<{ kind: "ok" | "error"; text: string } | null>(null)
   const [shake, setShake] = React.useState(false)
 
@@ -21,26 +23,26 @@ export function MailForm() {
     const data = new FormData(e.currentTarget)
     const message = String(data.get("message") ?? "").trim()
     if (!message) {
-      setStatus({ kind: "error", text: "Write a few words first." })
+      setStatus({ kind: "error", text: t.empty })
       setShake(true)
       setTimeout(() => setShake(false), 200)
       return
     }
     const extras = [
-      data.get("project") && `Project: ${data.get("project")}`,
-      data.get("timeline") && `Timeline: ${data.get("timeline")}`,
-      data.get("from") && `Reply to: ${data.get("from")}`,
+      data.get("project") && `${t.project}: ${data.get("project")}`,
+      data.get("timeline") && `${t.timeline}: ${data.get("timeline")}`,
+      data.get("from") && `${t.replyTo}: ${data.get("from")}`,
     ].filter(Boolean)
     const body = [message, extras.length ? "\n—\n" + extras.join("\n") : ""].join("")
-    const subject = String(data.get("subject") ?? "").trim() || "Hello"
+    const subject = String(data.get("subject") ?? "").trim() || t.defaultSubject
     window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    setStatus({ kind: "ok", text: "✓ Opening your mail app…" })
+    setStatus({ kind: "ok", text: t.opening })
   }
 
   return (
     <form onSubmit={onSubmit} noValidate>
       <div className={field}>
-        <span className={cn(key, "pt-3")}>To</span>
+        <span className={cn(key, "pt-3")}>{t.to}</span>
         <div className="flex-1 px-3.5 py-[9px]">
           <a href={`mailto:${site.email}`} className="hover:text-creme">
             {site.email}
@@ -49,18 +51,18 @@ export function MailForm() {
         </div>
       </div>
       <label className={cn(field, "group/f")}>
-        <span className={key}>From</span>
+        <span className={key}>{t.from}</span>
         <input name="from" type="email" autoComplete="email" placeholder={contact.fromPlaceholder} className={input} />
       </label>
       <label className={cn(field, "group/f")}>
-        <span className={key}>Subject</span>
+        <span className={key}>{t.subject}</span>
         <input name="subject" type="text" placeholder={contact.subjectPlaceholder} className={input} />
       </label>
       <div className="grid grid-cols-2 border-b-2 border-encre max-[540px]:grid-cols-1">
         {(
           [
-            ["Project", "project", "Type (optional)", contact.projectTypes],
-            ["Timeline", "timeline", "Timing (optional)", contact.timelines],
+            [t.project, "project", t.projectHint, contact.projectTypes],
+            [t.timeline, "timeline", t.timelineHint, contact.timelines],
           ] as const
         ).map(([k, name, hint, options], i) => (
           <label
@@ -88,7 +90,7 @@ export function MailForm() {
         ))}
       </div>
       <label className="block">
-        <span className="sr-only">Message</span>
+        <span className="sr-only">{t.message}</span>
         <textarea
           name="message"
           required
@@ -114,7 +116,7 @@ export function MailForm() {
           type="submit"
           className="flex-1 bg-encre py-3 text-[14px] tracking-[0.08em] text-papier hover:shadow-[inset_0_0_0_3px_var(--papier)] focus-visible:outline-offset-[-6px] focus-visible:outline-papier"
         >
-          ▸ SEND MESSAGE
+          {t.send}
         </button>
       </div>
     </form>

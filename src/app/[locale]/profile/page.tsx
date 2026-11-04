@@ -4,13 +4,18 @@ import type { Metadata } from "next"
 import { Capabilities } from "@/components/capabilities"
 import { DitherPortrait } from "@/components/dither-portrait"
 import { Reveal } from "@/components/reveal"
-import { profile, site } from "@/content/site"
+import { pageContent, type LocaleParams } from "@/i18n/server"
 
-export const metadata: Metadata = { title: "Profile" }
+type Props = { params: LocaleParams }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return { title: (await pageContent(params)).ui.rooms.profile.label }
+}
 
 const label = "text-[11px] tracking-[0.14em] text-braise uppercase"
 
-export default function ProfilePage() {
+export default async function ProfilePage({ params }: Props) {
+  const { profile, site, href } = await pageContent(params)
   const [lead, background] = profile.about
   return (
     <main className="pt-[72px]">
@@ -63,7 +68,7 @@ export default function ProfilePage() {
             {profile.cta.text}
           </p>
           <div className="justify-self-end max-[720px]:justify-self-stretch">
-            <Link href="/contact" className="os-btn primary px-[22px] py-3 max-[720px]:w-full max-[720px]:justify-center">
+            <Link href={href("/contact")} className="os-btn primary px-[22px] py-3 max-[720px]:w-full max-[720px]:justify-center">
               {profile.cta.button}
             </Link>
           </div>
