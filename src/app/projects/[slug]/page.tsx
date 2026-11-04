@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
@@ -66,6 +67,7 @@ export default async function ProjectPage({ params }: Props) {
     <main className="pt-[72px]">
       {/* hero: a dotted plate where the cover image goes, title bottom-left */}
       <header className="dot-field relative isolate flex min-h-[max(480px,calc(100dvh-72px))] flex-col justify-end overflow-hidden max-[767px]:min-h-[max(420px,calc(100dvh-71px))]">
+        {p.cover && <Image src={p.cover} alt="" fill priority sizes="100vw" className="-z-10 object-cover object-top" />}
         <div aria-hidden className="absolute inset-0 -z-0 bg-[linear-gradient(#00000073,#0000_18%,#00000059_48%,#000000d9)]" />
         <div className={`${shell} relative z-[2] py-8 text-creme max-[767px]:py-7`}>
           <Reveal
@@ -137,15 +139,25 @@ export default async function ProjectPage({ params }: Props) {
       <section aria-label="Screenshots" className="grid gap-[60px] pb-[30px] max-[767px]:gap-[30px]">
         {p.figures.map((f, n) => (
           <figure
-            key={f}
-            className="mx-auto w-[92%] border border-encre bg-papier shadow-[6px_6px_0_var(--grid)] max-[767px]:w-full"
+            key={f.caption}
+            className="mx-auto w-[92%] max-w-[1200px] border border-encre bg-papier shadow-[6px_6px_0_var(--grid)] max-[767px]:w-full"
           >
             <div className="flex h-8 items-center justify-between gap-4 px-4 text-[8px] tracking-[0.12em] uppercase">
               <span>fig. {pad(n + 2)}</span>
-              <span>screenshot</span>
+              <figcaption className="truncate">{f.caption}</figcaption>
             </div>
-            <div className="dot-field aspect-[1.85] max-h-[58dvh] w-full max-[767px]:aspect-[1.2]" />
-            <figcaption className="sr-only">{f}</figcaption>
+            {f.src ? (
+              <Image
+                src={f.src}
+                alt={f.caption}
+                width={1440}
+                height={900}
+                sizes="(max-width: 767px) 100vw, min(92vw, 1200px)"
+                className="block h-auto w-full border-t border-encre"
+              />
+            ) : (
+              <div className="dot-field aspect-[1.85] max-h-[58dvh] w-full max-[767px]:aspect-[1.2]" />
+            )}
           </figure>
         ))}
       </section>
@@ -165,6 +177,7 @@ export default async function ProjectPage({ params }: Props) {
             aria-label={`Next project: ${next.title}`}
             className="dot-field group relative isolate flex min-h-[max(480px,calc(100dvh-72px))] flex-col justify-end overflow-hidden text-creme max-[767px]:min-h-[max(420px,calc(100dvh-71px))]"
           >
+            {next.cover && <Image src={next.cover} alt="" fill sizes="100vw" className="-z-10 object-cover object-top" />}
             <span className={`${shell} absolute inset-x-0 top-6 z-[2] text-[10px] leading-[1.5] text-encre`}>
               Up next / {pad(((i + 1) % projects.length) + 1)}
             </span>

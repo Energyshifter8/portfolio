@@ -42,7 +42,8 @@ export type Project = {
     stack: string[]
     link?: { label: string; href: string }
   }
-  figures: string[]
+  cover?: string
+  figures: { caption: string; src?: string }[]
 }
 
 export const projects: Project[] = [
@@ -73,7 +74,15 @@ export const projects: Project[] = [
       status: "Hackathon MVP",
       stack: ["TypeScript", "Next.js 16", "MongoDB Atlas", "MCP", "A2A", "Vitest"],
     },
-    figures: ["Request intake", "Quote comparison", "Approval flow", "Audit chain"],
+    cover: "/projects/procure-agent/cover.png",
+    figures: [
+      { caption: "Agent steps: plan, act, observe, replan", src: "/projects/procure-agent/01-agent-steps.png" },
+      { caption: "Top 3 quotes with scores", src: "/projects/procure-agent/02-quotes.png" },
+      { caption: "Approval with the approver's name", src: "/projects/procure-agent/03-approval.png" },
+      { caption: "Procure-to-Pay timeline", src: "/projects/procure-agent/04-timeline.png" },
+      { caption: "Audit chain, 20 entries intact", src: "/projects/procure-agent/05-audit.png" },
+      { caption: "Purchases dashboard", src: "/projects/procure-agent/06-purchases.png" },
+    ],
   },
   {
     slug: "devdreams",
@@ -103,7 +112,12 @@ export const projects: Project[] = [
       stack: ["Next.js 16", "TypeScript", "Firebase", "Pinecone", "Groq", "next-intl"],
       link: { label: "Visit project", href: "https://roadmap-theta-eosin.vercel.app/" },
     },
-    figures: ["Roadmap canvas", "Topic drawer", "AI chat", "Voice input"],
+    cover: "/projects/devdreams/cover.png",
+    figures: [
+      { caption: "Frontend roadmap canvas", src: "/projects/devdreams/01-frontend.png" },
+      { caption: "Backend roadmap with milestones", src: "/projects/devdreams/02-backend.png" },
+      { caption: "AI roadmap assistant", src: "/projects/devdreams/03-assistant.png" },
+    ],
   },
   {
     slug: "mindx-plus",
@@ -132,7 +146,11 @@ export const projects: Project[] = [
       stack: ["Next.js 16", "React 19", "TypeScript", "TanStack Query", "shadcn/ui"],
       link: { label: "Visit project", href: "https://mindxplus-v2.vercel.app" },
     },
-    figures: ["Dashboard", "Recruitment list", "Survey list", "Survey flow"],
+    cover: "/projects/mindx-plus/cover.png",
+    figures: [
+      { caption: "Sign in", src: "/projects/mindx-plus/01-sign-in.png" },
+      { caption: "Sign up", src: "/projects/mindx-plus/02-sign-up.png" },
+    ],
   },
   {
     slug: "tlj-mongolia",
@@ -162,7 +180,14 @@ export const projects: Project[] = [
       stack: ["Next.js 16", "TypeScript", "Three.js", "React Three Fiber", "Tailwind CSS"],
       link: { label: "Visit project", href: "https://tlj-mongolia.vercel.app" },
     },
-    figures: ["3D showcase", "Loyalty card", "Games", "Leaderboard"],
+    cover: "/projects/tlj-mongolia/cover.png",
+    figures: [
+      { caption: "Loyalty card with QR", src: "/projects/tlj-mongolia/01-loyalty.png" },
+      { caption: "Mongolian Wordle", src: "/projects/tlj-mongolia/02-wordle.png" },
+      { caption: "Spin & Win", src: "/projects/tlj-mongolia/03-spin-wheel.png" },
+      { caption: "Brand quiz", src: "/projects/tlj-mongolia/04-quiz.png" },
+      { caption: "Leaderboard", src: "/projects/tlj-mongolia/05-leaderboard.png" },
+    ],
   },
   {
     slug: "bankers-algorithm",
@@ -191,7 +216,12 @@ export const projects: Project[] = [
       stack: ["C11", "Make", "Python", "JavaScript"],
       link: { label: "View on GitHub", href: "https://github.com/Energyshifter8/V-1-13-Bankers-Algorithm" },
     },
-    figures: ["Resource graph", "Safety steps", "CLI session"],
+    cover: "/projects/bankers-algorithm/cover.png",
+    figures: [
+      { caption: "Resource graph after a granted request", src: "/projects/bankers-algorithm/01-resource-graph.png" },
+      { caption: "Safety algorithm, step by step", src: "/projects/bankers-algorithm/02-safety-steps.png" },
+      { caption: "Command console", src: "/projects/bankers-algorithm/03-console.png" },
+    ],
   },
   {
     slug: "bearing-gan",
@@ -218,7 +248,13 @@ export const projects: Project[] = [
       status: "Submitted",
       stack: ["Python", "PyTorch", "scikit-learn", "NumPy", "Jupyter"],
     },
-    figures: ["Real vs. generated signals", "PSD comparison", "Accuracy by model"],
+    cover: "/projects/bearing-gan/cover.png",
+    figures: [
+      { caption: "WGAN-GP signal quality: time domain and PSD", src: "/projects/bearing-gan/01-signal-quality.png" },
+      { caption: "t-SNE: synthetic vs. real", src: "/projects/bearing-gan/02-tsne.png" },
+      { caption: "Downstream classifier accuracy by model", src: "/projects/bearing-gan/03-accuracy.png" },
+      { caption: "Mean 2D spectrograms", src: "/projects/bearing-gan/04-spectrogram.png" },
+    ],
   },
   {
     slug: "rest-api-guide",
@@ -246,7 +282,11 @@ export const projects: Project[] = [
       stack: ["Ruby 4", "Rails 8", "MySQL", "Docker", "OpenAPI"],
       link: { label: "Visit project", href: "https://rest-api-guide.vercel.app" },
     },
-    figures: ["Swagger UI", "Request flow", "Endpoints"],
+    cover: "/projects/rest-api-guide/cover.png",
+    figures: [
+      { caption: "Posts and Comments endpoints", src: "/projects/rest-api-guide/01-endpoints.png" },
+      { caption: "Trying POST /posts in Swagger", src: "/projects/rest-api-guide/02-try-it.png" },
+    ],
   },
   {
     slug: "soundwave",
@@ -273,7 +313,12 @@ export const projects: Project[] = [
       stack: ["Next.js", "TypeScript", "Tailwind CSS"],
       link: { label: "Visit project", href: "https://dumb-psi.vercel.app" },
     },
-    figures: ["Hero", "Visualizer", "Player"],
+    cover: "/projects/soundwave/cover.png",
+    figures: [
+      { caption: "Features", src: "/projects/soundwave/01-features.png" },
+      { caption: "Live demo player", src: "/projects/soundwave/02-live-demo.png" },
+      { caption: "Testimonials", src: "/projects/soundwave/03-testimonials.png" },
+    ],
   },
 ]
 

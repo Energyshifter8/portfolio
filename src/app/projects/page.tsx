@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -38,6 +39,11 @@ export default function ProjectsPage() {
                 aria-hidden
                 className="dot-field pointer-events-none invisible fixed top-[calc(72px+clamp(26px,4vw,64px))] right-[clamp(26px,4vw,64px)] bottom-[clamp(26px,4vw,64px)] z-[1] flex w-[min(38vw,620px)] flex-col justify-end border border-encre p-6 shadow-light group-hover:visible max-[1000px]:hidden"
               >
+                {p.cover && (
+                  <span className="relative mb-5 block min-h-0 flex-1 overflow-hidden border border-encre">
+                    <Image src={p.cover} alt="" fill sizes="38vw" className="object-cover object-top" />
+                  </span>
+                )}
                 <span className="text-[11px] tracking-[0.12em] uppercase">
                   {String(i + 1).padStart(2, "0")} · {p.meta.period} · {p.meta.status}
                 </span>
