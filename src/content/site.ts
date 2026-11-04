@@ -1,12 +1,12 @@
 // ─────────────────────────────────────────────────────────────
 // All site content lives here. Edit this file to make it yours.
-// Everything below is placeholder text.
+// Filled from github.com/Energyshifter8 and local coursework.
 // ─────────────────────────────────────────────────────────────
 
 export const site = {
   name: "Temuulen B.",
   initials: "TB",
-  role: "Software Engineer",
+  role: "Front-end Developer",
   location: "Ulaanbaatar, Mongolia",
   email: "temuulen.b@tanasoft.mn",
   tagline: "I build fast, careful interfaces and the systems behind them.",
@@ -47,132 +47,293 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "ledger",
-    title: "Ledger",
-    summary: "An invoicing and payments dashboard for small businesses.",
+    slug: "procure-agent",
+    title: "ProcureAgent",
+    summary: "An agentic procurement system that turns a request written in Mongolian into a paid, audited order.",
     description: [
-      "Ledger helps small teams send invoices, collect payments and see where their cash is going.",
-      "I designed the interface and built the web dashboard, the API and the payment integration.",
+      "ProcureAgent is a hackathon MVP that automates internal purchasing. An employee writes a request in Mongolian; the agent collects quotes from suppliers, scores them transparently, checks policy and sends the result to an approver.",
+      "After approval it makes a sandbox payment, reconciles VAT three ways and creates the order. Every step is written to an append-only audit chain. The rule: the LLM only reads, explains and justifies. Money, limits and approvals are decided by deterministic code.",
+    ],
+    featureGroups: [
+      {
+        title: "System",
+        items: [
+          { name: "Request parsing", detail: "an LLM turns free Mongolian text into a structured procurement spec." },
+          { name: "Quote scoring", detail: "supplier offers ranked by transparent, rule-based scores, not by the model." },
+          { name: "Agent protocols", detail: "MCP over Streamable HTTP and A2A (JSON-RPC 2.0 with an Agent Card)." },
+          { name: "Audit chain", detail: "every step, from request to payment and VAT check, recorded so it can't be changed." },
+          { name: "Testing", detail: "127 tests, typechecks across 7 packages and an end-to-end demo script." },
+        ],
+      },
+    ],
+    meta: {
+      client: "DEBE hackathon",
+      role: "Full-stack development · Agent design",
+      period: "2026",
+      status: "Hackathon MVP",
+      stack: ["TypeScript", "Next.js 16", "MongoDB Atlas", "MCP", "A2A", "Vitest"],
+    },
+    figures: ["Request intake", "Quote comparison", "Approval flow", "Audit chain"],
+  },
+  {
+    slug: "devdreams",
+    title: "DevDreams",
+    summary: "Interactive developer roadmaps with an AI assistant that answers questions about every topic.",
+    description: [
+      "DevDreams shows the Frontend, Backend, DevOps and Mobile roadmaps as branching canvases. Learners mark topics as done and open any topic for a description and curated links.",
+      "A built-in assistant uses retrieval-augmented generation (Pinecone + Groq Llama 3.3 70B) to answer questions, with voice input through Groq Whisper. The whole UI is in English and Mongolian.",
     ],
     featureGroups: [
       {
         title: "Web features",
         items: [
-          { name: "Dashboard", detail: "outstanding amounts, overdue invoices and monthly receipts at a glance." },
-          { name: "Invoices", detail: "create, send and track invoices with statuses and reminders." },
-          { name: "Payments", detail: "online card payments with partial-payment tracking." },
-          { name: "Customers", detail: "CSV import with row-level validation and error review." },
+          { name: "Roadmap canvas", detail: "four tracks laid out as a branching grid with SVG bezier connections drawn via ResizeObserver." },
+          { name: "AI assistant", detail: "RAG over Pinecone vector search with answers from Llama 3.3 70B on Groq." },
+          { name: "Voice input", detail: "Whisper speech-to-text with silence detection and auto-stop." },
+          { name: "Progress", detail: "completed topics persist across sessions." },
+          { name: "Bilingual", detail: "full English and Mongolian translation with next-intl." },
         ],
       },
     ],
     meta: {
-      client: "Placeholder Co.",
-      role: "Product design · Full-stack development",
+      client: "DevDreams",
+      role: "Full-stack development",
       period: "2026",
       status: "Live",
-      stack: ["Next.js", "TypeScript", "PostgreSQL", "Stripe"],
-      link: { label: "Visit project", href: "https://example.com" },
+      stack: ["Next.js 16", "TypeScript", "Firebase", "Pinecone", "Groq", "next-intl"],
+      link: { label: "Visit project", href: "https://roadmap-theta-eosin.vercel.app/" },
     },
-    figures: ["Dashboard overview", "Invoice editor", "Payment flow", "Customer import"],
+    figures: ["Roadmap canvas", "Topic drawer", "AI chat", "Voice input"],
   },
   {
-    slug: "steppe-maps",
-    title: "Steppe Maps",
-    summary: "An offline-first map app for travellers in rural Mongolia.",
+    slug: "mindx-plus",
+    title: "MindX Plus",
+    summary: "A recruitment and survey dashboard for HR teams, fully localized in Mongolian.",
     description: [
-      "Steppe Maps downloads regions ahead of time so routes and points of interest work without signal.",
-      "I built the mobile app, the tile pipeline and the sync service.",
+      "MindX Plus gives HR teams one place to create, manage and track recruitment assessments and candidate surveys.",
+      "The dashboard shows live stats (published counts, respondents, invitation balances) and refetching lists. A companion public site lets candidates fill in the surveys and recruitment tests.",
     ],
     featureGroups: [
       {
-        title: "Mobile features",
+        title: "Dashboard features",
         items: [
-          { name: "Offline regions", detail: "download vector tiles by province and keep them up to date." },
-          { name: "Routing", detail: "on-device routing over dirt tracks and paved roads." },
-          { name: "Waypoints", detail: "save camps, wells and fuel stops and share them later." },
+          { name: "Auth", detail: "login and sign-up with validation and background token refresh." },
+          { name: "Overview", detail: "stat cards and tables for recruitments and surveys." },
+          { name: "Recruitments", detail: "active and completed talent evaluations in one list." },
+          { name: "Survey site", detail: "a separate public app where respondents take surveys and tests." },
         ],
       },
     ],
     meta: {
-      client: "Independent product",
-      role: "Mobile development · Data pipeline",
-      period: "2025",
-      status: "Beta",
-      stack: ["React Native", "MapLibre", "Go", "SQLite"],
+      client: "MindX",
+      role: "Front-end development",
+      period: "2026",
+      status: "Live",
+      stack: ["Next.js 16", "React 19", "TypeScript", "TanStack Query", "shadcn/ui"],
+      link: { label: "Visit project", href: "https://mindxplus-v2.vercel.app" },
     },
-    figures: ["Region download", "Route view", "Waypoint list"],
+    figures: ["Dashboard", "Recruitment list", "Survey list", "Survey flow"],
   },
   {
-    slug: "signal-room",
-    title: "Signal Room",
-    summary: "A realtime ops console for monitoring IoT sensors.",
+    slug: "tlj-mongolia",
+    title: "TOUS les JOURS",
+    summary: "A digital experience for a Franco-Asian bakery: 3D pastries, loyalty cards and mini-games.",
     description: [
-      "Signal Room streams readings from thousands of sensors and flags anomalies as they happen.",
-      "I led front-end development and built the WebGL chart layer.",
+      "A web app concept for TOUS les JOURS Mongolia, built to bring customers back between visits.",
+      "It pairs a 3D pastry showcase with a loyalty programme and four small games feeding one leaderboard. It installs as a PWA and works offline.",
     ],
     featureGroups: [
       {
-        title: "Console features",
+        title: "Web features",
         items: [
-          { name: "Live charts", detail: "WebGL rendering of 100k+ points without dropping frames." },
-          { name: "Alerts", detail: "threshold and anomaly rules with on-call routing." },
-          { name: "Replays", detail: "scrub through past incidents minute by minute." },
+          { name: "3D showcase", detail: "low-poly pastry models rendered with React Three Fiber." },
+          { name: "Loyalty", detail: "QR card, Bronze / Silver / Gold tier progress and wallet buttons." },
+          { name: "Games", detail: "Mongolian Wordle, an 8×8 block puzzle, a brand quiz and a prize wheel." },
+          { name: "Leaderboard", detail: "scores from every game combined in one table." },
+          { name: "PWA", detail: "service worker with offline caching; installable on the home screen." },
         ],
       },
     ],
     meta: {
-      client: "Tanasoft",
-      role: "Front-end lead",
-      period: "2024 – 2025",
-      status: "In production",
-      stack: ["React", "TypeScript", "WebGL", "WebSockets"],
+      client: "Concept for TOUS les JOURS Mongolia",
+      role: "Design · Front-end development",
+      period: "2026",
+      status: "Live demo",
+      stack: ["Next.js 16", "TypeScript", "Three.js", "React Three Fiber", "Tailwind CSS"],
+      link: { label: "Visit project", href: "https://tlj-mongolia.vercel.app" },
     },
-    figures: ["Fleet overview", "Sensor detail", "Incident replay"],
+    figures: ["3D showcase", "Loyalty card", "Games", "Leaderboard"],
+  },
+  {
+    slug: "bankers-algorithm",
+    title: "Banker's Algorithm",
+    summary: "Deadlock avoidance in C, with an interactive resource-graph UI.",
+    description: [
+      "A team assignment for F.CSM302 Operating Systems at MUST: the Banker's Algorithm programming project from Silberschatz, Operating System Concepts (10th ed., ch. 8).",
+      "The C program grants a resource request only if the system stays in a safe state. A browser UI lets you edit Available, Max and Allocation, submit requests and step through the safety algorithm on a resource graph. The C binary does all the calculation.",
+    ],
+    featureGroups: [
+      {
+        title: "Program",
+        items: [
+          { name: "CLI", detail: "RQ / RL / * commands, safety algorithm (§8.6.3.1) and resource-request algorithm (§8.6.3.2)." },
+          { name: "Interactive UI", detail: "assignment, claim and request edges drawn as a resource graph." },
+          { name: "Step-through", detail: "the safety algorithm shown one step at a time." },
+          { name: "Tests", detail: "unit, CLI and server tests run with make test." },
+        ],
+      },
+    ],
+    meta: {
+      client: "MUST · F.CSM302 Operating Systems",
+      role: "Team project (5 members)",
+      period: "2026",
+      status: "Submitted",
+      stack: ["C11", "Make", "Python", "JavaScript"],
+      link: { label: "View on GitHub", href: "https://github.com/Energyshifter8/V-1-13-Bankers-Algorithm" },
+    },
+    figures: ["Resource graph", "Safety steps", "CLI session"],
+  },
+  {
+    slug: "bearing-gan",
+    title: "Synthetic Faults",
+    summary: "Generating unseen early-stage bearing faults with GANs: 96.84% downstream accuracy.",
+    description: [
+      "A machine-learning team project (Team I4, AI + Logistics Supply Chain) for COSE362 Machine Learning at Korea University.",
+      "We trained only on Normal and severe Ball021 vibration signals from the CWRU bearing dataset, then generated the unseen, intermediate Ball007 severity. The best model, WGAN-GP (λ=10), reached 96.84% classifier accuracy, only 3.16% below training on real data.",
+    ],
+    featureGroups: [
+      {
+        title: "Pipeline",
+        items: [
+          { name: "Preprocessing", detail: "CWRU signal loading and a window-size selection experiment." },
+          { name: "GAN family", detail: "nine experiments (E1–E9) plus a 2D variant, from vanilla GAN to WGAN-GP." },
+          { name: "Evaluation", detail: "downstream classifier accuracy, ACF, PSD and envelope similarity." },
+        ],
+      },
+    ],
+    meta: {
+      client: "Korea University · COSE362",
+      role: "Team project",
+      period: "2026",
+      status: "Submitted",
+      stack: ["Python", "PyTorch", "scikit-learn", "NumPy", "Jupyter"],
+    },
+    figures: ["Real vs. generated signals", "PSD comparison", "Accuracy by model"],
+  },
+  {
+    slug: "rest-api-guide",
+    title: "REST API Guide",
+    summary: "A Rails 8 + MySQL REST API, documented step by step in Mongolian.",
+    description: [
+      "A small Posts and Comments API built with Ruby on Rails 8 in API mode, MySQL 8.4 running in Docker and Swagger UI for documentation.",
+      "The README is a guide in Mongolian that follows a request from route to controller to database, with curl examples for every endpoint.",
+    ],
+    featureGroups: [
+      {
+        title: "API",
+        items: [
+          { name: "CRUD", detail: "JSON endpoints for posts and their comments." },
+          { name: "Swagger", detail: "OpenAPI 3 docs with a live Swagger UI." },
+          { name: "Docker", detail: "MySQL in a container for one-command setup." },
+        ],
+      },
+    ],
+    meta: {
+      client: "Personal / teaching",
+      role: "Back-end development · Documentation",
+      period: "2026",
+      status: "Live",
+      stack: ["Ruby 4", "Rails 8", "MySQL", "Docker", "OpenAPI"],
+      link: { label: "Visit project", href: "https://rest-api-guide.vercel.app" },
+    },
+    figures: ["Swagger UI", "Request flow", "Endpoints"],
+  },
+  {
+    slug: "soundwave",
+    title: "SoundWave",
+    summary: "An audio experience site that turns sound into fluid light and motion.",
+    description: [
+      "SoundWave is a creative website where every interaction makes ripples, pulses and visual feedback, so visitors feel the audio as well as see it.",
+      "The look is a 'cosmic sound lab': deep-space blacks, purple-to-cyan gradients and glass panels that pulse like audio gear.",
+    ],
+    featureGroups: [
+      {
+        title: "Web features",
+        items: [
+          { name: "Visualizers", detail: "fluid, organic animations driven by sound." },
+          { name: "Interaction", detail: "ripples and pulses respond to the cursor and to playback." },
+        ],
+      },
+    ],
+    meta: {
+      client: "Personal",
+      role: "Design · Front-end development",
+      period: "2026",
+      status: "Live",
+      stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+      link: { label: "Visit project", href: "https://dumb-psi.vercel.app" },
+    },
+    figures: ["Hero", "Visualizer", "Player"],
   },
 ]
 
 export const experience = [
   {
-    period: "2024 — now",
+    period: "2026 — now",
     title: "Software Engineer",
     org: "Tanasoft",
     branch: "work",
     detail: "Building product interfaces and internal platforms with React, TypeScript and Node.",
   },
   {
-    period: "2022 — 2024",
-    title: "Front-end Developer",
-    org: "Placeholder Studio",
+    period: "2026",
+    title: "Freelance developer",
+    org: "MindX · DevDreams · MonFresh",
     branch: "work",
-    detail: "Shipped marketing sites and dashboards for clients across finance and retail.",
+    detail: "MindX Plus recruitment dashboard and survey site, the DevDreams AI roadmap platform and the MonFresh marketing site.",
   },
   {
-    period: "2020 — 2022",
-    title: "Junior Developer",
-    org: "Placeholder Agency",
-    branch: "work",
-    detail: "Started with HTML, CSS and a lot of jQuery; moved the team to React.",
+    period: "2026",
+    title: "Hackathon team",
+    org: "DEBE hackathon",
+    branch: "community",
+    detail: "Built ProcureAgent, an agentic procurement MVP on MCP and A2A with 127 tests and an audit chain.",
   },
   {
-    period: "2016 — 2020",
-    title: "B.Sc. Computer Science",
-    org: "Placeholder University",
+    period: "2026",
+    title: "Development team",
+    org: "Sys&CoTech club, MUST",
+    branch: "community",
+    detail: "Club website, member app and the landing page for the club's Programming Olympiad 2026.",
+  },
+  {
+    period: "2026 Spring",
+    title: "Machine Learning (COSE362)",
+    org: "Korea University",
     branch: "study",
-    detail: "Graphics, algorithms and too many late nights in the lab.",
+    detail: "Team project generating unseen bearing faults with GANs; WGAN-GP reached 96.84% downstream accuracy.",
+  },
+  {
+    period: "2024 — now",
+    title: "B.Sc. Computer Science",
+    org: "Mongolian University of Science and Technology (MUST)",
+    branch: "study",
+    detail: "Data structures, algorithm design, operating systems, automata theory, computer graphics, data mining & ML, web design, and network administration.",
   },
 ]
 
 export const profile = {
   aboutLabels: ["Today", "Background"], // headings over the two `about` paragraphs
   about: [
-    "I'm a software engineer based in Ulaanbaatar. I care about interfaces that feel quick, read clearly and hold up under real use.",
-    "Most of my work sits between design and engineering: turning rough ideas into products, then making them fast and reliable.",
+    "I'm a computer science student at MUST and a software engineer at Tanasoft in Ulaanbaatar. I build web products end to end, from dashboards and AI assistants to 3D brand sites.",
+    "Most of my work sits between design and engineering: turning rough ideas into products, then making them fast and reliable. At university I go deeper into the systems underneath: operating systems, algorithms, automata and machine learning.",
   ],
   skills: [
-    { group: "Languages", items: ["TypeScript", "JavaScript", "Go", "SQL"] },
-    { group: "Front-end", items: ["React", "Next.js", "Tailwind CSS", "shadcn/ui", "WebGL"] },
-    { group: "Back-end", items: ["Node.js", "PostgreSQL", "Redis", "REST / GraphQL"] },
-    { group: "Tools", items: ["Figma", "Git", "Docker", "Vercel"] },
+    { group: "Languages", items: ["TypeScript", "JavaScript", "Python", "C", "Java", "Ruby", "SQL"] },
+    { group: "Front-end", items: ["React", "Next.js", "Tailwind CSS", "shadcn/ui", "Three.js / R3F", "TanStack Query"] },
+    { group: "Back-end & data", items: ["Node.js", "Ruby on Rails", "Firebase", "MongoDB", "MySQL"] },
+    { group: "AI & ML", items: ["PyTorch", "scikit-learn", "RAG / Pinecone", "MCP / A2A agents"] },
+    { group: "Tools", items: ["Git", "Docker", "Vercel", "Biome", "Vitest", "Figma"] },
   ],
   languages: ["Mongolian — native", "English — professional"],
   skillsTitle: "What I work with",
